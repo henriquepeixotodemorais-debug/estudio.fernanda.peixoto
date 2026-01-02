@@ -3,4 +3,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 2,segunda,08h00,1900-01-01 08:00:00,Simone,Dani,45
 3,segunda,08h00,1900-01-01 08:00:00,Perla,Dani,45
 4,segunda,08h45,1900-01-01 08:45:00,Sandra /Ledi,Dani,45
-5,segunda,09h30,09:30,Zezé / Gustavo,Dani,45
+5,segunda,09h30,1900-01-01 09:30:00,Zezé / Gustavo,Dani,45
