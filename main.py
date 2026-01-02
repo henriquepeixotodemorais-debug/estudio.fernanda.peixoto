@@ -38,7 +38,16 @@ if senha != "sistema.estudio.fernandapeixoto":
     st.stop()
 
 # -----------------------------------
-# NORMALIZAR HORÁRIO
+# CRIAÇÃO DAS ABAS
+# -----------------------------------
+aba_avaliacoes, aba_agenda, aba_comparacao = st.tabs([
+    "Avaliações Posturais",
+    "Agenda",
+    "Comparar Avaliações"
+])
+
+# -----------------------------------
+# FUNÇÃO PARA NORMALIZAR HORÁRIO
 # -----------------------------------
 def normalizar_horario(h):
     if not isinstance(h, str):
@@ -68,17 +77,7 @@ def normalizar_horario(h):
     return f"{hh}:{mm}", f"{hh}h{mm}"
 
 # -----------------------------------
-# CRIAÇÃO DAS ABAS
-# -----------------------------------
-aba_avaliacoes, aba_agenda, aba_comparacao = st.tabs([
-    "Avaliações Posturais",
-    "Agenda",
-    "Comparar Avaliações"
-])
-
-
-# -----------------------------------
-# CSV
+# FUNÇÕES DE CSV
 # -----------------------------------
 def load_csv(path, cols=None):
     if not os.path.exists(path):
@@ -118,7 +117,7 @@ def fix_ids(df, id_col="id"):
     return df
 
 # -----------------------------------
-# GITHUB
+# FUNÇÕES GITHUB
 # -----------------------------------
 def get_github_config():
     token = st.secrets["GITHUB_TOKEN"]
@@ -174,33 +173,6 @@ def apagar_imagem_github(nome_arquivo):
     data = {"message": f"Remove {nome_arquivo}", "sha": sha, "branch": branch}
     requests.delete(url, headers=headers, json=data)
 
-# -----------------------------------
-# LIMPEZA AGENDA
-# -----------------------------------
-def limpar_agenda(df):
-    df = df.dropna(how="all")
-    df = df.drop_duplicates()
-    df = df[df["horario"].notna()]
-    df = df[df["horario"].astype(str).str.strip() != ""]
-    return df.reset_index(drop=True)
-
-def corrigir_horarios_antigos(df):
-    if df.empty:
-        return df
-    if "horario_sort" not in df.columns:
-        df["horario_sort"] = None
-    for idx, row in df.iterrows():
-        h = row["horario"]
-        if not isinstance(h, str):
-            continue
-        if " " in h:
-            h = h.split(" ")[-1]
-        h_sort, h_disp = normalizar_horario(h)
-        if h_sort:
-            df.at[idx, "horario_sort"] = h_sort
-            df.at[idx, "horario"] = h_disp
-    return df
-
 # =====================================================================
 # AVALIAÇÕES POSTURAIS
 # =====================================================================
@@ -232,7 +204,7 @@ with aba_avaliacoes:
         "Fotos da avaliação", type=["png", "jpg", "jpeg"], accept_multiple_files=True
     )
 
-    if st.button("Salvar avaliação"):
+    if st.button("Salvar avaliação", key="salvar_avaliacao"):
         if nome.strip() == "":
             st.error("O nome é obrigatório.")
         else:
@@ -249,22 +221,18 @@ with aba_avaliacoes:
                     file_name = f"{novo_id}_{datetime.now().strftime('%Y%m%d_%H%M%S')}_{file.name}"
                     file_path = os.path.join(IMAGENS_DIR, file_name)
 
-                    # Salva temporariamente local
                     with open(file_path, "wb") as f:
                         f.write(file.getbuffer())
 
-                    # Envia para GitHub
                     github_upload_file(
                         local_path=file_path,
                         path_in_repo=f"imagens/{file_name}",
                         message=f"Adiciona imagem {file_name} via Streamlit"
                     )
 
-                    # Remove local (não precisamos mais dele)
                     if os.path.exists(file_path):
                         os.remove(file_path)
 
-                    # Registra no CSV
                     add_row(IMAGENS_CSV_PATH, {
                         "avaliacao_id": novo_id,
                         "arquivo": file_name,
@@ -295,19 +263,17 @@ with aba_avaliacoes:
             st.download_button(
                 "Baixar avaliação (.txt)",
                 texto_export,
-                file_name=f"avaliacao_{row['id']}.txt"
+                file_name=f"avaliacao_{row['id']}.txt",
+                key=f"baixar_avaliacao_{row['id']}"
             )
 
-            if st.button("Excluir avaliação", key=f"del_av_{row['id']}"):
-                # Apagar imagens do GitHub
+            if st.button("Excluir avaliação", key=f"del_avaliacao_{row['id']}"):
                 for _, frow in fotos.iterrows():
                     apagar_imagem_github(frow["arquivo"])
 
-                # Remover do CSV de imagens
                 img_df = img_df[img_df["avaliacao_id"] != row["id"]]
                 save_csv(img_df, IMAGENS_CSV_PATH)
 
-                # Remover da tabela de avaliações
                 aval_df = aval_df[aval_df["id"] != row["id"]]
                 save_csv(aval_df, AVALIACOES_PATH)
 
@@ -329,6 +295,80 @@ with aba_avaliacoes:
             st.markdown("---")
 
 # =====================================================================
+# FUNÇÕES DE LIMPEZA DA AGENDA
+# =====================================================================
+def limpar_agenda(df):
+    df = df.dropna(how="all")
+    df = df.drop_duplicates()
+    df = df[df["horario"].notna()]
+    df = df[df["horario"].astype(str).str.strip() != ""]
+    return df.reset_index(drop=True)
+
+def corrigir_horarios_antigos(df):
+    if df.empty:
+        return df
+    if "horario_sort" not in df.columns:
+        df["horario_sort"] = None
+    for idx, row in df.iterrows():
+        h = row["horario"]
+        if not isinstance(h, str):
+            continue
+        if " " in h:
+            h = h.split(" ")[-1]
+        h_sort, h_disp = normalizar_horario(h)
+        if h_sort:
+            df.at[idx, "horario_sort"] = h_sort
+            df.at[idx, "horario"] = h_disp
+    return df
+
+# =====================================================================
+# FUNÇÃO PARA GERAR PDF DA AGENDA
+# =====================================================================
+def gerar_pdf_agenda(df):
+    buffer = BytesIO()
+    doc = SimpleDocTemplate(buffer, pagesize=landscape(A4))
+    styles = getSampleStyleSheet()
+    story = []
+
+    story.append(Paragraph("Agenda Semanal", styles["Title"]))
+    story.append(Spacer(1, 20))
+
+    dias = ["segunda", "terça", "quarta", "quinta", "sexta", "sábado"]
+
+    for dia in dias:
+        story.append(Paragraph(dia.capitalize(), styles["Heading2"]))
+
+        dia_df = df[df["dia"] == dia].sort_values("horario_sort")
+
+        if dia_df.empty:
+            story.append(Paragraph("Sem horários.", styles["Normal"]))
+            story.append(Spacer(1, 12))
+            continue
+
+        tabela = [["Horário", "Nome", "Profissional", "Duração"]]
+
+        for _, row in dia_df.iterrows():
+            tabela.append([
+                row["horario"],
+                row["nome"],
+                row["profissional"],
+                f"{row['duracao']} min"
+            ])
+
+        t = Table(tabela)
+        t.setStyle(TableStyle([
+            ("BACKGROUND", (0, 0), (-1, 0), colors.lightgrey),
+            ("GRID", (0, 0), (-1, -1), 1, colors.black),
+            ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"),
+        ]))
+
+        story.append(t)
+        story.append(Spacer(1, 20))
+
+    doc.build(story)
+    return buffer.getvalue()
+
+# =====================================================================
 # AGENDA
 # =====================================================================
 with aba_agenda:
@@ -339,33 +379,26 @@ with aba_agenda:
         cols=["id", "dia", "horario", "horario_sort", "nome", "profissional", "duracao"]
     )
 
-    # Limpeza completa
     agenda_df = limpar_agenda(agenda_df)
-
-    # Corrigir horários antigos
     agenda_df = corrigir_horarios_antigos(agenda_df)
 
-    # Converter horario_sort para datetime
     agenda_df["horario_sort"] = pd.to_datetime(
         agenda_df["horario_sort"], format="%H:%M", errors="coerce"
     )
 
-    # Remover horários inválidos
     agenda_df = agenda_df.dropna(subset=["horario_sort"])
-
-    # Reorganizar IDs
     agenda_df = fix_ids(agenda_df)
-
     save_csv(agenda_df, AGENDA_PATH)
 
     st.subheader("Exportação da agenda")
-    if st.button("Gerar PDF da agenda semanal"):
+    if st.button("Gerar PDF da agenda semanal", key="gerar_pdf"):
         pdf_bytes = gerar_pdf_agenda(agenda_df)
         st.download_button(
             label="Baixar agenda semanal em PDF",
             data=pdf_bytes,
             file_name="agenda_semanal.pdf",
-            mime="application/pdf"
+            mime="application/pdf",
+            key="baixar_pdf"
         )
 
     st.markdown("---")
@@ -384,7 +417,7 @@ with aba_agenda:
                 st.markdown(f"**{row['horario']}** — {row['nome']} ({row['profissional']})")
                 st.caption(f"{row['duracao']} min")
 
-                if st.button("Excluir", key=f"del_{row['id']}"):
+                if st.button("Excluir", key=f"del_agenda_{row['id']}"):
                     agenda_df = agenda_df[agenda_df["id"] != row["id"]]
                     save_csv(agenda_df, AGENDA_PATH)
                     st.rerun()
@@ -405,11 +438,11 @@ with aba_agenda:
                 key=f"dur_{dia}"
             )
 
-            if st.button(f"Adicionar {dia}", key=f"add_{dia}"):
+            if st.button(f"Adicionar {dia}", key=f"add_horario_{dia}"):
                 horario_sort, horario_display = normalizar_horario(horario_raw)
 
                 if not horario_sort:
-                    st.error("Horário inválido. Exemplos válidos: 8, 8h, 8h00, 08:00")
+                    st.error("Horário inválido. Exemplos: 8, 8h, 8h00, 08:00")
                 elif nome.strip() == "" or profissional.strip() == "":
                     st.error("Preencha horário, nome e profissional.")
                 else:
@@ -446,14 +479,16 @@ with aba_comparacao:
             id1 = st.selectbox(
                 "Selecione a primeira avaliação",
                 aval_df["id"].tolist(),
-                format_func=lambda x: f"{aval_df.loc[aval_df['id']==x,'nome'].values[0]} — {aval_df.loc[aval_df['id']==x,'data'].values[0]}"
+                format_func=lambda x: f"{aval_df.loc[aval_df['id']==x,'nome'].values[0]} — {aval_df.loc[aval_df['id']==x,'data'].values[0]}",
+                key="sel1"
             )
 
         with col2:
             id2 = st.selectbox(
                 "Selecione a segunda avaliação",
                 aval_df["id"].tolist(),
-                format_func=lambda x: f"{aval_df.loc[aval_df['id']==x,'nome'].values[0]} — {aval_df.loc[aval_df['id']==x,'data'].values[0]}"
+                format_func=lambda x: f"{aval_df.loc[aval_df['id']==x,'nome'].values[0]} — {aval_df.loc[aval_df['id']==x,'data'].values[0]}",
+                key="sel2"
             )
 
         st.markdown("## Comparação lado a lado")
