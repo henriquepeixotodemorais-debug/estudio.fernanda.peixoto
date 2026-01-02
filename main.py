@@ -3,6 +3,8 @@ import pandas as pd
 import os
 from datetime import datetime
 from io import BytesIO
+import base64
+import requests
 
 # Imports para PDF (reportlab)
 from reportlab.lib.pagesizes import A4, landscape
@@ -40,6 +42,12 @@ if senha != "sistema.estudio.fernandapeixoto":
 # FUNÇÃO PARA NORMALIZAR HORÁRIO
 # -----------------------------------
 def normalizar_horario(h):
+    """
+    Recebe: 8, 8h, 8h0, 8h00, 8:0, 8:00, 08:00
+    Retorna:
+        horario_sort: 'HH:MM' (para ordenação)
+        horario_display: 'HHhMM' (para exibir)
+    """
     if not isinstance(h, str):
         return None, None
 
@@ -78,7 +86,7 @@ def load_csv(path, cols=None):
     if not os.path.exists(path):
         return pd.DataFrame(columns=cols if cols else [])
 
-    df = pd.read_csv(path, dtype=str)  # FORÇA TEXTO
+    df = pd.read_csv(path, dtype=str)  # força texto
 
     if cols:
         for c in cols:
@@ -88,8 +96,75 @@ def load_csv(path, cols=None):
 
     return df
 
+# -----------------------------------
+# INTEGRAÇÃO COM GITHUB
+# -----------------------------------
+def get_github_config():
+    token = st.secrets["GITHUB_TOKEN"]
+    repo = st.secrets["GITHUB_REPO"]
+    branch = st.secrets.get("GITHUB_BRANCH", "main")
+    base_api = f"https://api.github.com/repos/{repo}/contents"
+    headers = {
+        "Authorization": f"token {token}",
+        "Accept": "application/vnd.github+json"
+    }
+    return base_api, headers, branch
+
+def github_get_file_sha(path_in_repo):
+    try:
+        base_api, headers, branch = get_github_config()
+    except Exception:
+        return None
+
+    url = f"{base_api}/{path_in_repo}"
+    params = {"ref": branch}
+    r = requests.get(url, headers=headers, params=params)
+    if r.status_code == 200:
+        return r.json().get("sha")
+    return None
+
+def github_upload_file(local_path, path_in_repo, message):
+    if not os.path.exists(local_path):
+        return
+
+    try:
+        base_api, headers, branch = get_github_config()
+    except Exception:
+        return
+
+    url = f"{base_api}/{path_in_repo}"
+
+    with open(local_path, "rb") as f:
+        content = f.read()
+
+    content_b64 = base64.b64encode(content).decode("utf-8")
+    sha = github_get_file_sha(path_in_repo)
+
+    data = {
+        "message": message,
+        "content": content_b64,
+        "branch": branch
+    }
+    if sha:
+        data["sha"] = sha
+
+    r = requests.put(url, headers=headers, json=data)
+    if r.status_code not in (200, 201):
+        st.warning(f"Falha ao enviar {path_in_repo} para o GitHub: {r.status_code}")
+
 def save_csv(df, path):
     df.to_csv(path, index=False)
+
+    # Enviar CSV para o GitHub
+    try:
+        nome_arquivo = os.path.basename(path)
+        github_upload_file(
+            local_path=path,
+            path_in_repo=f"data/{nome_arquivo}",
+            message=f"Atualiza {nome_arquivo} via Streamlit"
+        )
+    except Exception as e:
+        st.warning(f"Não foi possível sincronizar {path} com o GitHub: {e}")
 
 def add_row(path, row_dict, cols=None):
     df = load_csv(path, cols=cols if cols else list(row_dict.keys()))
@@ -112,17 +187,17 @@ def fix_ids(df, id_col="id"):
 # LIMPEZA COMPLETA DO AGENDA.CSV
 # -----------------------------------
 def limpar_agenda(df):
-    # Remove linhas totalmente vazias
-    df = df.dropna(how="all")
+    if df.empty:
+        return df
 
-    # Remove duplicadas
+    df = df.dropna(how="all")
     df = df.drop_duplicates()
 
-    # Remove linhas sem horário
-    df = df[df["horario"].notna()]
+    if "horario" not in df.columns:
+        df["horario"] = None
 
-    # Remove linhas com horário vazio
-    df = df[df["horario"].astype(str).str.strip() != ""]
+    df["horario"] = df["horario"].fillna("").astype(str)
+    df = df[df["horario"].str.strip() != ""]
 
     return df.reset_index(drop=True)
 
@@ -133,6 +208,8 @@ def corrigir_horarios_antigos(df):
     if df.empty:
         return df
 
+    if "horario" not in df.columns:
+        df["horario"] = None
     if "horario_sort" not in df.columns:
         df["horario_sort"] = None
 
@@ -142,15 +219,19 @@ def corrigir_horarios_antigos(df):
         if not isinstance(h_display, str):
             continue
 
-        # Se veio como datetime completo: "1900-01-01 08h00"
+        h_display = h_display.strip()
+
+        # Se veio como "1900-01-01 08h00"
         if " " in h_display:
-            h_display = h_display.split(" ")[1]
+            h_display = h_display.split(" ")[-1]
 
         h_sort, h_disp = normalizar_horario(h_display)
 
-        if h_sort:
-            df.at[idx, "horario_sort"] = h_sort
-            df.at[idx, "horario"] = h_disp
+        if not h_sort:
+            continue
+
+        df.at[idx, "horario_sort"] = h_sort
+        df.at[idx, "horario"] = h_disp
 
     return df
 
@@ -285,11 +366,22 @@ with aba_avaliacoes:
                     with open(file_path, "wb") as f:
                         f.write(file.getbuffer())
 
+                    # salvar no CSV de imagens
                     add_row(IMAGENS_CSV_PATH, {
                         "avaliacao_id": novo_id,
                         "arquivo": file_name,
                         "data": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                     })
+
+                    # enviar imagem para o GitHub
+                    try:
+                        github_upload_file(
+                            local_path=file_path,
+                            path_in_repo=f"imagens/{file_name}",
+                            message=f"Adiciona imagem {file_name} via Streamlit"
+                        )
+                    except Exception as e:
+                        st.warning(f"Não foi possível enviar a imagem {file_name} para o GitHub: {e}")
 
             st.success("Avaliação registrada com sucesso.")
             st.rerun()
@@ -356,18 +448,14 @@ with aba_agenda:
         cols=["id", "dia", "horario", "horario_sort", "nome", "profissional", "duracao"]
     )
 
-    # Limpeza completa
     agenda_df = limpar_agenda(agenda_df)
-
-    # Corrigir horários antigos
     agenda_df = corrigir_horarios_antigos(agenda_df)
 
-    # Converter horario_sort para datetime
     agenda_df["horario_sort"] = pd.to_datetime(
         agenda_df["horario_sort"], format="%H:%M", errors="coerce"
     )
 
-    # Reorganizar IDs
+    agenda_df = agenda_df.dropna(subset=["horario_sort"])
     agenda_df = fix_ids(agenda_df)
 
     save_csv(agenda_df, AGENDA_PATH)
@@ -490,4 +578,3 @@ with aba_comparacao:
                 img_path = os.path.join(IMAGENS_DIR, row["arquivo"])
                 if os.path.exists(img_path):
                     st.image(img_path, caption=row["data"])
-
