@@ -68,6 +68,16 @@ def normalizar_horario(h):
     return f"{hh}:{mm}", f"{hh}h{mm}"
 
 # -----------------------------------
+# CRIAÇÃO DAS ABAS
+# -----------------------------------
+aba_avaliacoes, aba_agenda, aba_comparacao = st.tabs([
+    "Avaliações Posturais",
+    "Agenda",
+    "Comparar Avaliações"
+])
+
+
+# -----------------------------------
 # CSV
 # -----------------------------------
 def load_csv(path, cols=None):
