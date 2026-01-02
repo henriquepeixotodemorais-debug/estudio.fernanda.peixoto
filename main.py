@@ -25,7 +25,6 @@ AVALIACOES_PATH = os.path.join(DATA_DIR, "avaliacoes.csv")
 IMAGENS_CSV_PATH = os.path.join(DATA_DIR, "imagens.csv")
 AGENDA_PATH = os.path.join(DATA_DIR, "agenda.csv")
 
-
 # -----------------------------------
 # AUTENTICAÇÃO DO SISTEMA
 # -----------------------------------
@@ -37,7 +36,6 @@ if senha != "sistema.estudio.fernandapeixoto":
     st.warning("Acesso restrito. Insira a chave correta para continuar.")
     st.stop()
 
-
 # -----------------------------------
 # FUNÇÃO PARA NORMALIZAR HORÁRIO
 # -----------------------------------
@@ -45,7 +43,8 @@ def normalizar_horario(h):
     if not isinstance(h, str):
         return None, None
 
-    h = h.lower().strip().replace("h", ":")
+    h = h.lower().strip().replace(" ", "")
+    h = h.replace("h", ":")
 
     if ":" not in h:
         h = h + ":00"
@@ -57,14 +56,20 @@ def normalizar_horario(h):
     if len(partes) != 2:
         return None, None
 
-    hh = partes[0].zfill(2)
-    mm = partes[1].zfill(2)
+    hh, mm = partes
 
-    horario_sort = f"{hh}:{mm}"   # para ordenar
-    horario_display = f"{hh}h{mm}"  # para exibir
+    if not hh.isdigit():
+        return None, None
+    if not mm.isdigit():
+        mm = "00"
+
+    hh = hh.zfill(2)
+    mm = mm.zfill(2)
+
+    horario_sort = f"{hh}:{mm}"
+    horario_display = f"{hh}h{mm}"
 
     return horario_sort, horario_display
-
 
 # -----------------------------------
 # FUNÇÕES AUXILIARES CSV
@@ -72,24 +77,24 @@ def normalizar_horario(h):
 def load_csv(path, cols=None):
     if not os.path.exists(path):
         return pd.DataFrame(columns=cols if cols else [])
-    df = pd.read_csv(path)
+
+    df = pd.read_csv(path, dtype=str)  # FORÇA TEXTO
+
     if cols:
         for c in cols:
             if c not in df.columns:
                 df[c] = None
         df = df[cols]
-    return df
 
+    return df
 
 def save_csv(df, path):
     df.to_csv(path, index=False)
-
 
 def add_row(path, row_dict, cols=None):
     df = load_csv(path, cols=cols if cols else list(row_dict.keys()))
     df = pd.concat([df, pd.DataFrame([row_dict])], ignore_index=True)
     save_csv(df, path)
-
 
 def fix_ids(df, id_col="id"):
     if id_col not in df.columns:
@@ -103,6 +108,51 @@ def fix_ids(df, id_col="id"):
 
     return df
 
+# -----------------------------------
+# LIMPEZA COMPLETA DO AGENDA.CSV
+# -----------------------------------
+def limpar_agenda(df):
+    # Remove linhas totalmente vazias
+    df = df.dropna(how="all")
+
+    # Remove duplicadas
+    df = df.drop_duplicates()
+
+    # Remove linhas sem horário
+    df = df[df["horario"].notna()]
+
+    # Remove linhas com horário vazio
+    df = df[df["horario"].astype(str).str.strip() != ""]
+
+    return df.reset_index(drop=True)
+
+# -----------------------------------
+# CORRIGIR HORÁRIOS ANTIGOS
+# -----------------------------------
+def corrigir_horarios_antigos(df):
+    if df.empty:
+        return df
+
+    if "horario_sort" not in df.columns:
+        df["horario_sort"] = None
+
+    for idx, row in df.iterrows():
+        h_display = row.get("horario")
+
+        if not isinstance(h_display, str):
+            continue
+
+        # Se veio como datetime completo: "1900-01-01 08h00"
+        if " " in h_display:
+            h_display = h_display.split(" ")[1]
+
+        h_sort, h_disp = normalizar_horario(h_display)
+
+        if h_sort:
+            df.at[idx, "horario_sort"] = h_sort
+            df.at[idx, "horario"] = h_disp
+
+    return df
 
 # -----------------------------------
 # FUNÇÃO PARA GERAR PDF DA AGENDA
@@ -123,18 +173,15 @@ def gerar_pdf_agenda(agenda_df):
     styles = getSampleStyleSheet()
     estilo_titulo = styles["Heading1"]
     estilo_titulo.alignment = 1
-    estilo_normal = styles["Normal"]
 
     titulo = Paragraph("Agenda Semanal - Estúdio de Pilates", estilo_titulo)
     elements.append(titulo)
     elements.append(Spacer(1, 12))
 
     if agenda_df.empty:
-        elements.append(Paragraph("Nenhum horário cadastrado.", estilo_normal))
+        elements.append(Paragraph("Nenhum horário cadastrado."))
         doc.build(elements)
-        pdf = buffer.getvalue()
-        buffer.close()
-        return pdf
+        return buffer.getvalue()
 
     dias_ordem = ["segunda", "terça", "quarta", "quinta", "sexta", "sábado"]
     cabecalhos = [d.capitalize() for d in dias_ordem]
@@ -144,27 +191,27 @@ def gerar_pdf_agenda(agenda_df):
         dia_df = agenda_df[agenda_df["dia"] == dia].sort_values("horario_sort")
         linhas = []
         for _, row in dia_df.iterrows():
-            linha = f"{row['horario']} - {row['nome']} ({row['profissional']}) [{row['duracao']} min]"
-            linhas.append(linha)
+            linhas.append(
+                f"{row['horario']} - {row['nome']} ({row['profissional']}) [{row['duracao']} min]"
+            )
         if not linhas:
             linhas.append(" ")
         dados_por_dia[dia] = linhas
 
     max_linhas = max(len(dados_por_dia[d]) for d in dias_ordem)
 
-    tabela_dados = []
-    tabela_dados.append(cabecalhos)
+    tabela_dados = [cabecalhos]
 
     for i in range(max_linhas):
         linha = []
         for dia in dias_ordem:
-            linhas_dia = dados_por_dia[dia]
-            linha.append(linhas_dia[i] if i < len(linhas_dia) else " ")
+            lista = dados_por_dia[dia]
+            linha.append(lista[i] if i < len(lista) else " ")
         tabela_dados.append(linha)
 
     tabela = Table(tabela_dados, repeatRows=1)
 
-    estilo_tabela = TableStyle([
+    tabela.setStyle(TableStyle([
         ("BACKGROUND", (0, 0), (-1, 0), colors.lightgrey),
         ("GRID", (0, 0), (-1, -1), 0.5, colors.black),
         ("ALIGN", (0, 0), (-1, -1), "CENTER"),
@@ -172,15 +219,12 @@ def gerar_pdf_agenda(agenda_df):
         ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"),
         ("FONTSIZE", (0, 0), (-1, 0), 12),
         ("FONTSIZE", (0, 1), (-1, -1), 9),
-    ])
+    ]))
 
-    tabela.setStyle(estilo_tabela)
     elements.append(tabela)
-
     doc.build(elements)
-    pdf = buffer.getvalue()
-    buffer.close()
-    return pdf
+
+    return buffer.getvalue()
 
 # -----------------------------------
 # LAYOUT PRINCIPAL
@@ -190,7 +234,6 @@ aba_avaliacoes, aba_agenda, aba_comparacao = st.tabs([
     "Agenda",
     "Comparar Avaliações"
 ])
-
 
 # =====================================================================
 # AVALIAÇÕES POSTURAIS
@@ -302,7 +345,6 @@ with aba_avaliacoes:
 
             st.markdown("---")
 
-
 # =====================================================================
 # AGENDA
 # =====================================================================
@@ -313,32 +355,20 @@ with aba_agenda:
         AGENDA_PATH,
         cols=["id", "dia", "horario", "horario_sort", "nome", "profissional", "duracao"]
     )
-    agenda_df = fix_ids(agenda_df)
 
-    # Normalizar horários existentes (caso algum ainda esteja sem horario_sort)
-    def _ajustar_linhas_existentes(df):
-        if "horario_sort" not in df.columns:
-            df["horario_sort"] = None
-        for idx, row in df.iterrows():
-            h_display = row.get("horario")
-            h_sort = row.get("horario_sort")
-            if pd.isna(h_sort) and isinstance(h_display, str) and "h" in h_display:
-                # converter de 08h00 para 08:00
-                h_temp = h_display.replace("h", ":")
-                try:
-                    partes = h_temp.split(":")
-                    hh = partes[0].zfill(2)
-                    mm = partes[1].zfill(2)
-                    h_sort_fixed = f"{hh}:{mm}"
-                    df.at[idx, "horario_sort"] = h_sort_fixed
-                except Exception:
-                    df.at[idx, "horario_sort"] = None
-        return df
+    # Limpeza completa
+    agenda_df = limpar_agenda(agenda_df)
 
-    agenda_df = _ajustar_linhas_existentes(agenda_df)
+    # Corrigir horários antigos
+    agenda_df = corrigir_horarios_antigos(agenda_df)
+
+    # Converter horario_sort para datetime
     agenda_df["horario_sort"] = pd.to_datetime(
         agenda_df["horario_sort"], format="%H:%M", errors="coerce"
     )
+
+    # Reorganizar IDs
+    agenda_df = fix_ids(agenda_df)
 
     save_csv(agenda_df, AGENDA_PATH)
 
@@ -402,8 +432,8 @@ with aba_agenda:
                     add_row(AGENDA_PATH, {
                         "id": novo_id,
                         "dia": dia,
-                        "horario": horario_display,     # exibição: 08h00
-                        "horario_sort": horario_sort,   # ordenação: 08:00
+                        "horario": horario_display,
+                        "horario_sort": horario_sort,
                         "nome": nome,
                         "profissional": profissional,
                         "duracao": duracao
@@ -411,7 +441,6 @@ with aba_agenda:
 
                     st.success("Horário adicionado.")
                     st.rerun()
-
 
 # =====================================================================
 # COMPARAÇÃO ENTRE AVALIAÇÕES
@@ -461,3 +490,4 @@ with aba_comparacao:
                 img_path = os.path.join(IMAGENS_DIR, row["arquivo"])
                 if os.path.exists(img_path):
                     st.image(img_path, caption=row["data"])
+
