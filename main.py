@@ -25,7 +25,6 @@ AVALIACOES_PATH = os.path.join(DATA_DIR, "avaliacoes.csv")
 IMAGENS_CSV_PATH = os.path.join(DATA_DIR, "imagens.csv")
 AGENDA_PATH = os.path.join(DATA_DIR, "agenda.csv")
 
-
 # -----------------------------------
 # AUTENTICAÇÃO DO SISTEMA
 # -----------------------------------
@@ -37,19 +36,29 @@ if senha != "sistema.estudio.fernandapeixoto":
     st.warning("Acesso restrito. Insira a chave correta para continuar.")
     st.stop()
 
-
 # -----------------------------------
-# FUNÇÃO PARA NORMALIZAR HORÁRIO
+# FUNÇÃO PARA NORMALIZAR HORÁRIO (NOVA)
 # -----------------------------------
 def normalizar_horario(h):
+    """
+    Recebe algo como: 8, 8h, 8h0, 8h00, 8:0, 8:00, 08:00
+    Retorna:
+        - horario_sort: 'HH:MM' (para ordenação, ex: '08:00')
+        - horario_display: 'HHhMM' (para exibir, ex: '08h00')
+    """
     if not isinstance(h, str):
         return None, None
 
-    h = h.lower().strip().replace("h", ":")
+    h = h.lower().strip().replace(" ", "")
 
+    # Trocar h por :
+    h = h.replace("h", ":")
+
+    # Se não tiver ":", adicionar minutos
     if ":" not in h:
         h = h + ":00"
 
+    # Se terminar com ":", completar minutos
     if h.endswith(":"):
         h = h + "00"
 
@@ -57,14 +66,22 @@ def normalizar_horario(h):
     if len(partes) != 2:
         return None, None
 
-    hh = partes[0].zfill(2)
-    mm = partes[1].zfill(2)
+    hh = partes[0]
+    mm = partes[1]
 
-    horario_sort = f"{hh}:{mm}"   # para ordenar
-    horario_display = f"{hh}h{mm}"  # para exibir
+    # Garantir 2 dígitos
+    if not hh.isdigit():
+        return None, None
+    if not mm.isdigit():
+        mm = "00"
+
+    hh = hh.zfill(2)
+    mm = mm.zfill(2)
+
+    horario_sort = f"{hh}:{mm}"
+    horario_display = f"{hh}h{mm}"
 
     return horario_sort, horario_display
-
 
 # -----------------------------------
 # FUNÇÕES AUXILIARES CSV
@@ -80,16 +97,13 @@ def load_csv(path, cols=None):
         df = df[cols]
     return df
 
-
 def save_csv(df, path):
     df.to_csv(path, index=False)
-
 
 def add_row(path, row_dict, cols=None):
     df = load_csv(path, cols=cols if cols else list(row_dict.keys()))
     df = pd.concat([df, pd.DataFrame([row_dict])], ignore_index=True)
     save_csv(df, path)
-
 
 def fix_ids(df, id_col="id"):
     if id_col not in df.columns:
@@ -103,6 +117,50 @@ def fix_ids(df, id_col="id"):
 
     return df
 
+# -----------------------------------
+# FUNÇÃO PARA CORRIGIR HORÁRIOS ANTIGOS NA AGENDA
+# -----------------------------------
+def corrigir_horarios_antigos(df):
+    """
+    Corrige registros antigos que podem ter:
+    - horario em '08h00' e horario_sort vazio
+    - horario em '08:00'
+    Garante:
+    - horario = 'HHhMM'
+    - horario_sort = 'HH:MM'
+    """
+    if df.empty:
+        return df
+
+    # Se coluna não existir, cria
+    if "horario_sort" not in df.columns:
+        df["horario_sort"] = None
+
+    for idx, row in df.iterrows():
+        h_display = row.get("horario")
+        h_sort = row.get("horario_sort")
+
+        # Se já tem horario_sort válido, tenta padronizar apenas exibição
+        if isinstance(h_sort, str) and ":" in h_sort:
+            try:
+                partes = h_sort.split(":")
+                hh = partes[0].zfill(2)
+                mm = partes[1].zfill(2)
+                df.at[idx, "horario_sort"] = f"{hh}:{mm}"
+                df.at[idx, "horario"] = f"{hh}h{mm}"
+                continue
+            except Exception:
+                pass
+
+        # Se não tem horario_sort, mas tem horario em string
+        if isinstance(h_display, str):
+            # Normalizar usando a função principal
+            h_sort_new, h_display_new = normalizar_horario(h_display)
+            if h_sort_new:
+                df.at[idx, "horario_sort"] = h_sort_new
+                df.at[idx, "horario"] = h_display_new
+
+    return df
 
 # -----------------------------------
 # FUNÇÃO PARA GERAR PDF DA AGENDA
@@ -190,7 +248,6 @@ aba_avaliacoes, aba_agenda, aba_comparacao = st.tabs([
     "Agenda",
     "Comparar Avaliações"
 ])
-
 
 # =====================================================================
 # AVALIAÇÕES POSTURAIS
@@ -302,7 +359,6 @@ with aba_avaliacoes:
 
             st.markdown("---")
 
-
 # =====================================================================
 # AGENDA
 # =====================================================================
@@ -315,27 +371,10 @@ with aba_agenda:
     )
     agenda_df = fix_ids(agenda_df)
 
-    # Normalizar horários existentes (caso algum ainda esteja sem horario_sort)
-    def _ajustar_linhas_existentes(df):
-        if "horario_sort" not in df.columns:
-            df["horario_sort"] = None
-        for idx, row in df.iterrows():
-            h_display = row.get("horario")
-            h_sort = row.get("horario_sort")
-            if pd.isna(h_sort) and isinstance(h_display, str) and "h" in h_display:
-                # converter de 08h00 para 08:00
-                h_temp = h_display.replace("h", ":")
-                try:
-                    partes = h_temp.split(":")
-                    hh = partes[0].zfill(2)
-                    mm = partes[1].zfill(2)
-                    h_sort_fixed = f"{hh}:{mm}"
-                    df.at[idx, "horario_sort"] = h_sort_fixed
-                except Exception:
-                    df.at[idx, "horario_sort"] = None
-        return df
+    # Corrigir quaisquer registros antigos
+    agenda_df = corrigir_horarios_antigos(agenda_df)
 
-    agenda_df = _ajustar_linhas_existentes(agenda_df)
+    # Converter horario_sort para datetime, para ordenar
     agenda_df["horario_sort"] = pd.to_datetime(
         agenda_df["horario_sort"], format="%H:%M", errors="coerce"
     )
@@ -411,7 +450,6 @@ with aba_agenda:
 
                     st.success("Horário adicionado.")
                     st.rerun()
-
 
 # =====================================================================
 # COMPARAÇÃO ENTRE AVALIAÇÕES
