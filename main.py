@@ -39,6 +39,34 @@ if senha != "sistema.estudio.fernandapeixoto":
 
 
 # -----------------------------------
+# FUNÇÃO PARA NORMALIZAR HORÁRIO
+# -----------------------------------
+def normalizar_horario(h):
+    if not isinstance(h, str):
+        return None, None
+
+    h = h.lower().strip().replace("h", ":")
+
+    if ":" not in h:
+        h = h + ":00"
+
+    if h.endswith(":"):
+        h = h + "00"
+
+    partes = h.split(":")
+    if len(partes) != 2:
+        return None, None
+
+    hh = partes[0].zfill(2)
+    mm = partes[1].zfill(2)
+
+    horario_sort = f"{hh}:{mm}"   # para ordenar
+    horario_display = f"{hh}h{mm}"  # para exibir
+
+    return horario_sort, horario_display
+
+
+# -----------------------------------
 # FUNÇÕES AUXILIARES CSV
 # -----------------------------------
 def load_csv(path, cols=None):
@@ -80,11 +108,6 @@ def fix_ids(df, id_col="id"):
 # FUNÇÃO PARA GERAR PDF DA AGENDA
 # -----------------------------------
 def gerar_pdf_agenda(agenda_df):
-    """
-    Gera um PDF em paisagem com a agenda semanal em formato de grade dinâmica.
-    Colunas: segunda a sábado.
-    Cada célula contém os horários cadastrados daquele dia.
-    """
     buffer = BytesIO()
 
     doc = SimpleDocTemplate(
@@ -99,15 +122,13 @@ def gerar_pdf_agenda(agenda_df):
     elements = []
     styles = getSampleStyleSheet()
     estilo_titulo = styles["Heading1"]
-    estilo_titulo.alignment = 1  # centralizado
+    estilo_titulo.alignment = 1
     estilo_normal = styles["Normal"]
 
-    # Título
     titulo = Paragraph("Agenda Semanal - Estúdio de Pilates", estilo_titulo)
     elements.append(titulo)
     elements.append(Spacer(1, 12))
 
-    # Se não houver nada na agenda
     if agenda_df.empty:
         elements.append(Paragraph("Nenhum horário cadastrado.", estilo_normal))
         doc.build(elements)
@@ -115,14 +136,12 @@ def gerar_pdf_agenda(agenda_df):
         buffer.close()
         return pdf
 
-    # Ordem fixa de dias
     dias_ordem = ["segunda", "terça", "quarta", "quinta", "sexta", "sábado"]
     cabecalhos = [d.capitalize() for d in dias_ordem]
 
-    # Montar conteúdo por dia (lista de strings)
     dados_por_dia = {}
     for dia in dias_ordem:
-        dia_df = agenda_df[agenda_df["dia"] == dia].sort_values("horario")
+        dia_df = agenda_df[agenda_df["dia"] == dia].sort_values("horario_sort")
         linhas = []
         for _, row in dia_df.iterrows():
             linha = f"{row['horario']} - {row['nome']} ({row['profissional']}) [{row['duracao']} min]"
@@ -131,10 +150,8 @@ def gerar_pdf_agenda(agenda_df):
             linhas.append(" ")
         dados_por_dia[dia] = linhas
 
-    # Descobrir o máximo de linhas entre os dias
     max_linhas = max(len(dados_por_dia[d]) for d in dias_ordem)
 
-    # Construir tabela (linha 0 = cabeçalho, demais = conteúdo)
     tabela_dados = []
     tabela_dados.append(cabecalhos)
 
@@ -142,43 +159,31 @@ def gerar_pdf_agenda(agenda_df):
         linha = []
         for dia in dias_ordem:
             linhas_dia = dados_por_dia[dia]
-            if i < len(linhas_dia):
-                linha.append(linhas_dia[i])
-            else:
-                linha.append(" ")
+            linha.append(linhas_dia[i] if i < len(linhas_dia) else " ")
         tabela_dados.append(linha)
 
-    # Criar tabela ReportLab
     tabela = Table(tabela_dados, repeatRows=1)
 
-    # Estilo da tabela (bordas, alinhamento etc.)
     estilo_tabela = TableStyle([
         ("BACKGROUND", (0, 0), (-1, 0), colors.lightgrey),
-        ("TEXTCOLOR", (0, 0), (-1, 0), colors.black),
+        ("GRID", (0, 0), (-1, -1), 0.5, colors.black),
         ("ALIGN", (0, 0), (-1, -1), "CENTER"),
         ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
         ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"),
         ("FONTSIZE", (0, 0), (-1, 0), 12),
         ("FONTSIZE", (0, 1), (-1, -1), 9),
-        ("GRID", (0, 0), (-1, -1), 0.5, colors.black),
-        ("LEFTPADDING", (0, 0), (-1, -1), 4),
-        ("RIGHTPADDING", (0, 0), (-1, -1), 4),
-        ("TOPPADDING", (0, 0), (-1, -1), 3),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 3),
     ])
 
     tabela.setStyle(estilo_tabela)
     elements.append(tabela)
 
-    # Construir PDF
     doc.build(elements)
     pdf = buffer.getvalue()
     buffer.close()
     return pdf
 
-
 # -----------------------------------
-# LAYOUT PRINCIPAL (após autenticação)
+# LAYOUT PRINCIPAL
 # -----------------------------------
 aba_avaliacoes, aba_agenda, aba_comparacao = st.tabs([
     "Avaliações Posturais",
@@ -199,22 +204,16 @@ with aba_avaliacoes:
 
     img_df = load_csv(IMAGENS_CSV_PATH, cols=["avaliacao_id", "arquivo", "data"])
 
-    # -----------------------------
-    # FILTRO POR NOME
-    # -----------------------------
     st.subheader("Filtrar avaliações")
     filtro = st.text_input("Digite parte do nome para filtrar")
 
-    if filtro.strip() != "":
-        aval_filtradas = aval_df[aval_df["nome"].str.contains(filtro, case=False, na=False)]
-    else:
-        aval_filtradas = aval_df
+    aval_filtradas = (
+        aval_df[aval_df["nome"].str.contains(filtro, case=False, na=False)]
+        if filtro.strip() else aval_df
+    )
 
     st.markdown("---")
 
-    # -----------------------------
-    # CRIAR NOVA AVALIAÇÃO
-    # -----------------------------
     st.subheader("Criar nova avaliação")
 
     nome = st.text_input("Nome da pessoa avaliada")
@@ -255,9 +254,6 @@ with aba_avaliacoes:
     st.markdown("---")
     st.subheader("Avaliações registradas")
 
-    # -----------------------------
-    # LISTAR AVALIAÇÕES
-    # -----------------------------
     if aval_filtradas.empty:
         st.info("Nenhuma avaliação encontrada.")
     else:
@@ -266,9 +262,6 @@ with aba_avaliacoes:
 
             fotos = img_df[img_df["avaliacao_id"] == row["id"]]
 
-            # -----------------------------
-            # EXPORTAÇÃO / IMPRESSÃO
-            # -----------------------------
             texto_export = (
                 f"Avaliação Postural\n"
                 f"Nome: {row['nome']}\n"
@@ -282,30 +275,21 @@ with aba_avaliacoes:
                 file_name=f"avaliacao_{row['id']}.txt"
             )
 
-            # -----------------------------
-            # EXCLUIR AVALIAÇÃO
-            # -----------------------------
             if st.button("Excluir avaliação", key=f"del_av_{row['id']}"):
-                # remover fotos associadas
                 for _, frow in fotos.iterrows():
                     img_path = os.path.join(IMAGENS_DIR, frow["arquivo"])
                     if os.path.exists(img_path):
                         os.remove(img_path)
 
-                # remover registros de fotos
                 img_df = img_df[img_df["avaliacao_id"] != row["id"]]
                 save_csv(img_df, IMAGENS_CSV_PATH)
 
-                # remover avaliação
                 aval_df = aval_df[aval_df["id"] != row["id"]]
                 save_csv(aval_df, AVALIACOES_PATH)
 
                 st.success("Avaliação removida.")
                 st.rerun()
 
-            # -----------------------------
-            # FOTOS LADO A LADO
-            # -----------------------------
             if fotos.empty:
                 st.write("Sem fotos registradas.")
             else:
@@ -325,11 +309,39 @@ with aba_avaliacoes:
 with aba_agenda:
     st.header("Agenda da Semana")
 
-    agenda_df = load_csv(AGENDA_PATH, cols=["id", "dia", "horario", "nome", "profissional", "duracao"])
+    agenda_df = load_csv(
+        AGENDA_PATH,
+        cols=["id", "dia", "horario", "horario_sort", "nome", "profissional", "duracao"]
+    )
     agenda_df = fix_ids(agenda_df)
+
+    # Normalizar horários existentes (caso algum ainda esteja sem horario_sort)
+    def _ajustar_linhas_existentes(df):
+        if "horario_sort" not in df.columns:
+            df["horario_sort"] = None
+        for idx, row in df.iterrows():
+            h_display = row.get("horario")
+            h_sort = row.get("horario_sort")
+            if pd.isna(h_sort) and isinstance(h_display, str) and "h" in h_display:
+                # converter de 08h00 para 08:00
+                h_temp = h_display.replace("h", ":")
+                try:
+                    partes = h_temp.split(":")
+                    hh = partes[0].zfill(2)
+                    mm = partes[1].zfill(2)
+                    h_sort_fixed = f"{hh}:{mm}"
+                    df.at[idx, "horario_sort"] = h_sort_fixed
+                except Exception:
+                    df.at[idx, "horario_sort"] = None
+        return df
+
+    agenda_df = _ajustar_linhas_existentes(agenda_df)
+    agenda_df["horario_sort"] = pd.to_datetime(
+        agenda_df["horario_sort"], format="%H:%M", errors="coerce"
+    )
+
     save_csv(agenda_df, AGENDA_PATH)
 
-    # Botão para exportar agenda em PDF
     st.subheader("Exportação da agenda")
     if st.button("Gerar PDF da agenda semanal"):
         pdf_bytes = gerar_pdf_agenda(agenda_df)
@@ -350,7 +362,7 @@ with aba_agenda:
         with col_dias[i]:
             st.subheader(dia.capitalize())
 
-            dia_df = agenda_df[agenda_df["dia"] == dia].sort_values("horario")
+            dia_df = agenda_df[agenda_df["dia"] == dia].sort_values("horario_sort")
 
             for _, row in dia_df.iterrows():
                 st.markdown(f"**{row['horario']}** — {row['nome']} ({row['profissional']})")
@@ -364,11 +376,10 @@ with aba_agenda:
                 st.markdown("---")
 
             st.markdown("**Novo horário**")
-            horario = st.text_input(f"Horário ({dia})", key=f"hora_{dia}")
+            horario_raw = st.text_input(f"Horário ({dia})", key=f"hora_{dia}")
             nome = st.text_input("Nome", key=f"nome_{dia}")
             profissional = st.text_input("Profissional", key=f"prof_{dia}")
 
-            # Default 45 minutos
             duracao = st.number_input(
                 "Duração (min)",
                 min_value=10,
@@ -379,18 +390,25 @@ with aba_agenda:
             )
 
             if st.button(f"Adicionar {dia}", key=f"add_{dia}"):
-                if horario.strip() == "" or nome.strip() == "" or profissional.strip() == "":
+                horario_sort, horario_display = normalizar_horario(horario_raw)
+
+                if not horario_sort:
+                    st.error("Horário inválido. Exemplos válidos: 8, 8h, 8h00, 08:00")
+                elif nome.strip() == "" or profissional.strip() == "":
                     st.error("Preencha horário, nome e profissional.")
                 else:
                     novo_id = 1 if agenda_df.empty else int(agenda_df["id"].max()) + 1
+
                     add_row(AGENDA_PATH, {
                         "id": novo_id,
                         "dia": dia,
-                        "horario": horario,
+                        "horario": horario_display,     # exibição: 08h00
+                        "horario_sort": horario_sort,   # ordenação: 08:00
                         "nome": nome,
                         "profissional": profissional,
                         "duracao": duracao
                     })
+
                     st.success("Horário adicionado.")
                     st.rerun()
 
