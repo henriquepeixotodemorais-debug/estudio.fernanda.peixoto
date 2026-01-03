@@ -46,3 +46,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 49,quinta,07h45,1900-01-01 07:45:00,Lourencio,Jane,45
 50,quinta,08h30,1900-01-01 08:30:00,Vanda,Jane,45
 51,quinta,09h15,1900-01-01 09:15:00,Mercedes,Jane,45
+52,quinta,10h15,10:15,Walter/Darci,Dani,45
