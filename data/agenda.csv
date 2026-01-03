@@ -18,3 +18,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 20,terça,07h45,1900-01-01 07:45:00,Lourencio,Jane,45
 21,terça,08h30,1900-01-01 08:30:00,Vanda,Jane,45
 22,terça,10h15,1900-01-01 10:15:00,Walter/Jadson,Nat,45
+23,terça,11h00,11:00,Aurélio,Nat,45
