@@ -36,3 +36,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 39,quarta,14h30,1900-01-01 14:30:00,Yasmin/Simone,Nat,45
 40,quarta,16h00,1900-01-01 16:00:00,Lana/Socorro,Nat,45
 41,quarta,16h45,1900-01-01 16:45:00,Cássia/Melson,Fer,45
+42,quarta,17h30,17:30,Annie,Fer,45
