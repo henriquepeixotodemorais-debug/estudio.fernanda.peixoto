@@ -55,4 +55,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 59,quinta,17h30,1900-01-01 17:30:00,Fabiana Mattos/Vera Torres,Fer,45
 60,quinta,18h30,1900-01-01 18:30:00,Márcia/Fernanda Ribeiro,Fer,45
 61,quinta,19h15,1900-01-01 19:15:00,Ian/Humberto,Nat,45
-62,quinta,20h00,20:00,Fernanda/Diego,Nat,45
+62,quinta,20h00,1900-01-01 20:00:00,Fernanda/Diego,Nat,45
