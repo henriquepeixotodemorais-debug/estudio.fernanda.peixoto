@@ -27,4 +27,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 29,terça,17h30,1900-01-01 17:30:00,Eluiza/Douglas,Nat,45
 30,terça,18h30,1900-01-01 18:30:00,Fernanda Ribeiro/Joelle,Fer,45
 31,terça,19h15,1900-01-01 19:15:00,Ian/Carol,Fer,45
-32,terça,20h00,20:00,Mila/Leida,Fer,45
+32,terça,20h00,1900-01-01 20:00:00,Mila/Leida,Fer,45
