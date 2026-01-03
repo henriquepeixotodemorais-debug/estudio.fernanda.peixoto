@@ -21,4 +21,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 23,terça,11h00,1900-01-01 11:00:00,Aurélio,Nat,45
 24,terça,12h30,1900-01-01 12:30:00,Davi,Nat,45
 25,terça,14h30,1900-01-01 14:30:00,Jaqueline/Francinete,Nat,45
-26,terça,15h15,15:15,Simone,Nat,45
+26,terça,15h15,1900-01-01 15:15:00,Simone,Nat,45
