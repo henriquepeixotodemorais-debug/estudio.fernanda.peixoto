@@ -74,3 +74,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 79,sábado,09h00,1900-01-01 09:00:00,Samyra/Rael/Isabeli/Débora,Fer,45
 80,sábado,09h45,1900-01-01 09:45:00,Rosana/Renata,Fer,45
 81,sábado,10h30,1900-01-01 10:30:00,Bruno/Rafael,Nat,45
+82,quinta,19h15,19:15,Ian,Nat,45
