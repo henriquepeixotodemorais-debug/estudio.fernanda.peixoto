@@ -34,4 +34,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 36,quarta,10h15,1900-01-01 10:15:00,Maria,Dani,45
 38,quarta,15h15,1900-01-01 15:15:00,Lívia/Cida,Nat,45
 39,quarta,14h30,1900-01-01 14:30:00,Yasmin/Simone,Nat,45
-40,quarta,16h00,16:00,Lana/Socorro,Nat,45
+40,quarta,16h00,1900-01-01 16:00:00,Lana/Socorro,Nat,45
