@@ -45,4 +45,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 48,quinta,07h00,1900-01-01 07:00:00,Vera Valladares,Nat,45
 49,quinta,07h45,1900-01-01 07:45:00,Lourencio,Jane,45
 50,quinta,08h30,1900-01-01 08:30:00,Vanda,Jane,45
-51,quinta,09h15,09:15,Mercedes,Jane,45
+51,quinta,09h15,1900-01-01 09:15:00,Mercedes,Jane,45
