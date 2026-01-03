@@ -39,4 +39,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 42,quarta,17h30,1900-01-01 17:30:00,Annie,Fer,45
 43,quarta,18h15,1900-01-01 18:15:00,Alexandre/Laides,Fer,45
 44,quarta,19h00,1900-01-01 19:00:00,Ivonete/Luciano,Dani,45
-45,quarta,19h45,19:45,Edilma/(Kênia),Dani,45
+45,quarta,19h45,1900-01-01 19:45:00,Edilma/(Kênia),Dani,45
