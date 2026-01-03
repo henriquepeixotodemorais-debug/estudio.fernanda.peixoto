@@ -17,3 +17,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 19,terça,07h00,1900-01-01 07:00:00,Vera Valladares,Nat,45
 20,terça,07h45,1900-01-01 07:45:00,Lourencio,Jane,45
 21,terça,08h30,1900-01-01 08:30:00,Vanda,Jane,45
+22,terça,10h15,10:15,Walter/Jadson,Nat,45
