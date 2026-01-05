@@ -73,3 +73,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 81,sábado,10h30,1900-01-01 10:30:00,Bruno/Rafael,Nat,45
 82,quinta,19h15,1900-01-01 19:15:00,Ian,Nat,45
 83,segunda,13h45,1900-01-01 13:45:00,Cecília (fisio),Nat,45
+84,terça,15h15,15:15,Simone/Jadson,Nat,45
