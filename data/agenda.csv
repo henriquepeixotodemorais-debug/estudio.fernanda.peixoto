@@ -75,3 +75,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 83,segunda,13h45,1900-01-01 13:45:00,Cecília (fisio),Nat,45
 84,terça,15h15,1900-01-01 15:15:00,Simone/Jadson,Nat,45
 85,quinta,11h00,1900-01-01 11:00:00,Jadson,Nat,45
+86,quinta,19h15,19:15,Ian/Joelle (Exp),Nat,45
