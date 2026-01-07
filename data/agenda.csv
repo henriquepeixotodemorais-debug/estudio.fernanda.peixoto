@@ -10,7 +10,6 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 20,terça,07h45,1900-01-01 07:45:00,Lourencio,Jane,45
 21,terça,08h30,1900-01-01 08:30:00,Vanda,Jane,45
 23,terça,11h00,1900-01-01 11:00:00,Aurélio,Nat,45
-25,terça,14h30,1900-01-01 14:30:00,Jaqueline/Francinete,Nat,45
 27,terça,16h00,1900-01-01 16:00:00,Malu/Massena,Dani,45
 33,quarta,07h15,1900-01-01 07:15:00,Liliam/Fernanda Brier,Fer,45
 35,quarta,09h30,1900-01-01 09:30:00,Patrícia/Lídia,Dani,45
