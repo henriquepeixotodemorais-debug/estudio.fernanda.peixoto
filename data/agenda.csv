@@ -80,3 +80,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 105,segunda,08h45,1900-01-01 08:45:00,Sandra,Dani,45
 106,segunda,09h30,1900-01-01 09:30:00,Gustavo,Dani,45
 107,segunda,09h30,1900-01-01 09:30:00,Zezé,Dani,45
+108,segunda,17h30,17:30,Alexandre,Fer,45
