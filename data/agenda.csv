@@ -79,4 +79,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 108,segunda,17h30,1900-01-01 17:30:00,Alexandre,Fer,45
 109,segunda,17h30,1900-01-01 17:30:00,Eleandra,Fer,45
 110,segunda,19h00,1900-01-01 19:00:00,Renê,Dani,45
-111,segunda,19h00,19:00,Laides,Dani,45
+111,segunda,19h00,1900-01-01 19:00:00,Laides,Dani,45
