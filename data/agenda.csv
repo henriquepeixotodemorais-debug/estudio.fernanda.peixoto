@@ -88,4 +88,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 126,terça,20h00,1900-01-01 20:00:00,Leida,Fer,45
 127,terça,15h15,1900-01-01 15:15:00,L,xxx,45
 128,segunda,10h15,1900-01-01 10:15:00,Lana (R),Nat,45
-129,segunda,11h00,11:00,Dona Maria/Seu José,Nat,45
+129,segunda,11h00,1900-01-01 11:00:00,Dona Maria/Seu José,Nat,45
