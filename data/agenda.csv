@@ -87,4 +87,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 119,terça,16h45,1900-01-01 16:45:00,Fabiana Spada,Dani,45
 120,terça,17h30,1900-01-01 17:30:00,L,xxx,45
 121,terça,18h30,1900-01-01 18:30:00,Fernanda R.,Fer,45
-122,terça,18h30,18:30,Rosana H.,Fer,45
+122,terça,18h30,1900-01-01 18:30:00,Rosana H.,Fer,45
