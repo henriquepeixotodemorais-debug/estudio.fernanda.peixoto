@@ -93,3 +93,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 132,segunda,08h00,1900-01-01 08:00:00,L,Dani,45
 133,segunda,08h45,1900-01-01 08:45:00,L,Dani,45
 134,segunda,13h45,1900-01-01 13:45:00,L,xxx,45
+135,segunda,14h30,14:30,L,Nat,45
