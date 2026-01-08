@@ -119,7 +119,6 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 177,sexta,16h00,1900-01-01 16:00:00,Sofia,Nat,45
 178,sexta,15h15,1900-01-01 15:15:00,Cida (R),Nat,45
 179,sexta,16h45,1900-01-01 16:45:00,Alexandre,Nat,45
-180,sexta,17h30,1900-01-01 17:30:00,Eleandra,Nat,45
 181,sábado,08h15,1900-01-01 08:15:00,Simone,Fer,45
 182,sábado,08h15,1900-01-01 08:15:00,Anna Luísa,Fer,45
 183,sábado,10h30,1900-01-01 10:30:00,Bruno,Nat,45
