@@ -119,3 +119,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 175,sexta,09h30,1900-01-01 09:30:00,Zezé ,Nat,45
 176,sexta,15h15,1900-01-01 15:15:00,Lívia (R),Nat,45
 177,sexta,16h00,1900-01-01 16:00:00,Sofia,Nat,45
+178,sexta,15h15,15:15,Cida (R),Nat,45
