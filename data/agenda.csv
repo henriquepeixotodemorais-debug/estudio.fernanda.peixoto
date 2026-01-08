@@ -45,7 +45,6 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 81,sábado,10h30,1900-01-01 10:30:00,Bruno/Rafael,Nat,45
 85,quinta,11h00,1900-01-01 11:00:00,Jadson,Nat,45
 86,quinta,19h15,1900-01-01 19:15:00,Ian/Joelle (Exp),Nat,45
-87,quarta,08h45,1900-01-01 08:45:00,Gustavo/Zezé (R)/ Fabiana Spada,Dani,45
 89,terça,10h15,1900-01-01 10:15:00,Walter,Nat,45
 90,quarta,14h30,1900-01-01 14:30:00,Yasmin,Nat,45
 93,quinta,17h30,1900-01-01 17:30:00,Fabiana M/ Socorro,Fer,45
