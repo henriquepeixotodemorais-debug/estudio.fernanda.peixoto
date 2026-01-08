@@ -107,4 +107,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 153,quarta,19h00,1900-01-01 19:00:00,Ivonete,Dani,45
 154,quarta,19h00,1900-01-01 19:00:00,Luciano,Dani,45
 155,quinta,06h15,1900-01-01 06:15:00,Rosana,Nat,45
-156,quinta,06h15,06:15,Camilla,Nat,45
+156,quinta,06h15,1900-01-01 06:15:00,Camilla,Nat,45
