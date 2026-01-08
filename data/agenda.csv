@@ -98,4 +98,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 137,segunda,16h00,1900-01-01 16:00:00,L,Nat,45
 138,segunda,18h15,1900-01-01 18:15:00,Simone,Fer,45
 139,segunda,20h30,1900-01-01 20:30:00,L,Dani,45
-140,quarta,07h15,07:15,Liliam,Fer,45
+140,quarta,07h15,1900-01-01 07:15:00,Liliam,Fer,45
