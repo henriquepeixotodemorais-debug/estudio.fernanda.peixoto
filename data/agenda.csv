@@ -123,4 +123,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 179,sexta,16h45,1900-01-01 16:45:00,Alexandre,Nat,45
 180,sexta,17h30,1900-01-01 17:30:00,Eleandra,Nat,45
 181,sábado,08h15,1900-01-01 08:15:00,Simone,Fer,45
-182,sábado,08h15,08:15,Anna Luísa,Fer,45
+182,sábado,08h15,1900-01-01 08:15:00,Anna Luísa,Fer,45
