@@ -130,3 +130,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 195,quarta,15h15,1900-01-01 15:15:00,L,Nat,45
 196,quarta,19h45,1900-01-01 19:45:00,L,Dani,45
 197,quarta,20h30,1900-01-01 20:30:00,L,xxx,45
+198,quinta,07h00,07:00,L,Nat,45
