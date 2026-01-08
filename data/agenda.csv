@@ -118,4 +118,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 182,sábado,08h15,1900-01-01 08:15:00,Anna Luísa,Fer,45
 183,sábado,10h30,1900-01-01 10:30:00,Bruno,Nat,45
 184,sábado,10h30,1900-01-01 10:30:00,Liliam (R),Nat,45
-185,terça,07h00,07:00,L,Nat,45
+185,terça,07h00,1900-01-01 07:00:00,L,Nat,45
