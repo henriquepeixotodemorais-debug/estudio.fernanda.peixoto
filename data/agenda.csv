@@ -96,4 +96,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 135,segunda,14h30,1900-01-01 14:30:00,L,Nat,45
 136,segunda,15h15,1900-01-01 15:15:00,L,Nat,45
 137,segunda,16h00,1900-01-01 16:00:00,L,Nat,45
-138,segunda,18h15,18:15,Simone,Fer,45
+138,segunda,18h15,1900-01-01 18:15:00,Simone,Fer,45
