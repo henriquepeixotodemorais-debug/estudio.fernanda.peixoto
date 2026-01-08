@@ -137,3 +137,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 203,quinta,14h30,1900-01-01 14:30:00,Jadson,Nat,45
 204,quinta,11h00,1900-01-01 11:00:00,L,Nat,45
 205,sexta,08h00,1900-01-01 08:00:00,L,Nat,45
+206,sexta,08h45,08:45,L (somente dia 09/01),Nat,45
