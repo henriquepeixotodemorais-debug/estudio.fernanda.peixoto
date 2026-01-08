@@ -124,4 +124,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 189,terça,11h00,1900-01-01 11:00:00,L,Nat,45
 190,terça,11h45,1900-01-01 11:45:00,L,xxx,45
 191,terça,13h45,1900-01-01 13:45:00,L,xxx,45
-192,terça,18h30,18:30,Rosana H. (EXP),Fer,45
+192,terça,18h30,1900-01-01 18:30:00,Rosana H. (EXP),Fer,45
