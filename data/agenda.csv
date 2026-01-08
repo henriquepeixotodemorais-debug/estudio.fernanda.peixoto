@@ -145,3 +145,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 211,sexta,16h00,1900-01-01 16:00:00,L,Nat,45
 212,sexta,16h45,1900-01-01 16:45:00,L,Nat,45
 213,sexta,17h30,1900-01-01 17:30:00,L,Nat,45
+214,sexta,18h15,18:15,L,Nat,45
