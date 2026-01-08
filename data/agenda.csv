@@ -123,3 +123,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 187,terça,08h30,1900-01-01 08:30:00,L,Jane,45
 188,terça,09h15,1900-01-01 09:15:00,L,Jane,45
 189,terça,11h00,1900-01-01 11:00:00,L,Nat,45
+190,terça,11h45,11:45,L,xxx,45
