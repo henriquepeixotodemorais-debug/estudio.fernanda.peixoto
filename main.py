@@ -336,7 +336,7 @@ def gerar_pdf_agenda(df):
     dias = ["segunda", "terça", "quarta", "quinta", "sexta", "sábado"]
 
     for dia in dias:
-        story.append(Paragraph(dia.capitalize(), styles["Heading2"]))
+        story.append(Paragraph(dia.capitalize(), styles["Heading2"]).hAlign)
 
         dia_df = df[df["dia"] == dia].sort_values("horario_sort")
 
