@@ -1,1 +1,149 @@
 id,dia,horario,horario_sort,nome,profissional,duracao
+1,segunda,07h15,1900-01-01 07:15:00,Arlete/ Fernanda/ Alice,Fernanda,45
+6,segunda,10h15,1900-01-01 10:15:00,Darci,Nat,45
+7,segunda,14h30,1900-01-01 14:30:00,Yasmin,Nat,45
+8,segunda,15h15,1900-01-01 15:15:00,Lívia,Nat,45
+10,segunda,16h45,1900-01-01 16:45:00,Rachel e familia,Fer,45
+12,segunda,18h15,1900-01-01 18:15:00,Socorro,Fer,45
+14,segunda,19h45,1900-01-01 19:45:00,Fernanda/Diego,Dani,45
+19,terça,07h00,1900-01-01 07:00:00,Vera Valladares,Nat,45
+20,terça,07h45,1900-01-01 07:45:00,Lourencio,Jane,45
+21,terça,08h30,1900-01-01 08:30:00,Vanda,Jane,45
+23,terça,11h00,1900-01-01 11:00:00,Aurélio,Nat,45
+27,terça,16h00,1900-01-01 16:00:00,Malu/Massena,Dani,45
+36,quarta,10h15,1900-01-01 10:15:00,Maria,Dani,45
+41,quarta,16h45,1900-01-01 16:45:00,Cássia/Melson,Fer,45
+42,quarta,17h30,1900-01-01 17:30:00,Annie,Fer,45
+48,quinta,07h00,1900-01-01 07:00:00,Vera Valladares,Nat,45
+50,quinta,08h30,1900-01-01 08:30:00,Vanda,Jane,45
+51,quinta,09h15,1900-01-01 09:15:00,Mercedes,Jane,45
+53,quinta,12h00,1900-01-01 12:00:00,Luíza,Nat,45
+55,quinta,14h30,1900-01-01 14:30:00,Francinete,Nat,45
+56,quinta,15h15,1900-01-01 15:15:00,Rachel e família,Fer,45
+57,quinta,16h00,1900-01-01 16:00:00,Malu/Massena,Fer,45
+62,quinta,20h00,1900-01-01 20:00:00,Fernanda/Diego,Nat,45
+64,sexta,08h00,1900-01-01 08:00:00,Igor,Nat,45
+65,sexta,08h45,1900-01-01 08:45:00,Aurélio,Nat,45
+67,sexta,10h15,1900-01-01 10:15:00,Maria/José,Nat,45
+68,sexta,11h00,1900-01-01 11:00:00,Ledi,Nat,45
+69,sexta,14h30,1900-01-01 14:30:00,Suleima,Nat,45
+74,sexta,18h15,1900-01-01 18:15:00,Laura (Exp),Nat,45
+79,sábado,09h00,1900-01-01 09:00:00,Samyra/Rael/Isabeli/Débora,Fer,45
+80,sábado,09h45,1900-01-01 09:45:00,Rosana/Renata,Fer,45
+89,terça,10h15,1900-01-01 10:15:00,Walter,Nat,45
+90,quarta,14h30,1900-01-01 14:30:00,Yasmin,Nat,45
+94,sábado,07h30,1900-01-01 07:30:00,Vera Valladares,Nat,45
+96,quarta,19h45,1900-01-01 19:45:00,Edilma,Dani,45
+97,quarta,20h30,1900-01-01 20:30:00,Kenia,xxx,45
+99,segunda,06h15,1900-01-01 06:15:00,Eluiza,Nat,45
+100,quarta,06h15,1900-01-01 06:15:00,Eluiza,Nat,45
+101,sexta,06h15,1900-01-01 06:15:00,Rosana (R),Nat,45
+102,sexta,17h30,1900-01-01 17:30:00,Eleandra,Nat,45
+104,segunda,08h00,1900-01-01 08:00:00,Perla,Dani,45
+105,segunda,08h45,1900-01-01 08:45:00,Sandra,Dani,45
+106,segunda,09h30,1900-01-01 09:30:00,Gustavo,Dani,45
+107,segunda,09h30,1900-01-01 09:30:00,Zezé,Dani,45
+108,segunda,17h30,1900-01-01 17:30:00,Alexandre,Fer,45
+109,segunda,17h30,1900-01-01 17:30:00,Eleandra,Fer,45
+110,segunda,19h00,1900-01-01 19:00:00,Renê,Dani,45
+111,segunda,19h00,1900-01-01 19:00:00,Laides,Dani,45
+112,segunda,20h30,1900-01-01 20:30:00,Kenia,Dani,45
+113,terça,06h15,1900-01-01 06:15:00,Camilla,Nat,45
+114,terça,06h15,1900-01-01 06:15:00,Rosana,Nat,45
+115,terça,10h15,1900-01-01 10:15:00,Jadson,Nat,45
+116,terça,14h30,1900-01-01 14:30:00,Jaqueline,Nat,45
+117,terça,14h30,1900-01-01 14:30:00,Francinete,Nat,45
+118,terça,16h45,1900-01-01 16:45:00,Ana,Dani,45
+119,terça,16h45,1900-01-01 16:45:00,Fabiana Spada,Dani,45
+120,terça,17h30,1900-01-01 17:30:00,L,xxx,45
+121,terça,18h30,1900-01-01 18:30:00,Fernanda R.,Fer,45
+123,terça,19h15,1900-01-01 19:15:00,Ian,Fer,45
+124,terça,19h15,1900-01-01 19:15:00,Carol,Fer,45
+125,terça,20h00,1900-01-01 20:00:00,Mila,Fer,45
+126,terça,20h00,1900-01-01 20:00:00,Leida,Fer,45
+127,terça,15h15,1900-01-01 15:15:00,L,xxx,45
+128,segunda,10h15,1900-01-01 10:15:00,Lana (R),Nat,45
+129,segunda,11h00,1900-01-01 11:00:00,Dona Maria/Seu José,Nat,45
+130,segunda,11h45,1900-01-01 11:45:00,L,xxx,45
+131,segunda,06h15,1900-01-01 06:15:00,L,Nat,45
+132,segunda,08h00,1900-01-01 08:00:00,L,Dani,45
+133,segunda,08h45,1900-01-01 08:45:00,L,Dani,45
+134,segunda,13h45,1900-01-01 13:45:00,L,xxx,45
+135,segunda,14h30,1900-01-01 14:30:00,L,Nat,45
+136,segunda,15h15,1900-01-01 15:15:00,L,Nat,45
+137,segunda,16h00,1900-01-01 16:00:00,L,Nat,45
+138,segunda,18h15,1900-01-01 18:15:00,Simone,Fer,45
+139,segunda,20h30,1900-01-01 20:30:00,L,Dani,45
+140,quarta,07h15,1900-01-01 07:15:00,Liliam,Fer,45
+141,quarta,07h15,1900-01-01 07:15:00,Brier,Fer,45
+142,quarta,08h00,1900-01-01 08:00:00,L,Dani,45
+143,quarta,08h45,1900-01-01 08:45:00,Gustavo,Dani,45
+144,quarta,08h45,1900-01-01 08:45:00,Fabiana Spada,Dani,45
+145,quarta,09h30,1900-01-01 09:30:00,Patrícia,Dani,45
+146,quarta,09h30,1900-01-01 09:30:00,Lídia,Dani,45
+147,quarta,11h00,1900-01-01 11:00:00,L,xxx,45
+148,quarta,15h15,1900-01-01 15:15:00,Lívia,Nat,45
+149,quarta,16h00,1900-01-01 16:00:00,Cida,Fer,45
+150,quarta,16h00,1900-01-01 16:00:00,Lana,Fer,45
+151,quarta,18h15,1900-01-01 18:15:00,Laides,Fer,45
+152,quarta,18h15,1900-01-01 18:15:00,Alexandre,Fer,45
+153,quarta,19h00,1900-01-01 19:00:00,Ivonete,Dani,45
+154,quarta,19h00,1900-01-01 19:00:00,Luciano,Dani,45
+155,quinta,06h15,1900-01-01 06:15:00,Rosana,Nat,45
+156,quinta,06h15,1900-01-01 06:15:00,Camilla,Nat,45
+158,quinta,07h45,1900-01-01 07:45:00,Lourencio,Jane,45
+160,quinta,10h15,1900-01-01 10:15:00,Walter,Nat,45
+161,quinta,10h15,1900-01-01 10:15:00,Darci,Nat,45
+163,quinta,13h45,1900-01-01 13:45:00,Cecília (fisio),Nat,45
+164,quinta,16h45,1900-01-01 16:45:00,Ana,Fer,45
+165,quinta,17h30,1900-01-01 17:30:00,Fabiana Mattos,Fer,45
+166,quinta,17h30,1900-01-01 17:30:00,Socorro,Fer,45
+167,quinta,18h30,1900-01-01 18:30:00,Fernanda R.,Fer,45
+168,quinta,18h30,1900-01-01 18:30:00,Márcia,Fer,45
+169,quinta,19h15,1900-01-01 19:15:00,Ian,Nat,45
+170,quinta,19h15,1900-01-01 19:15:00,Joelle (EXP),Nat,45
+171,quinta,16h45,1900-01-01 16:45:00,Helena,Fer,45
+172,sexta,07h15,1900-01-01 07:15:00,Liliam,Fer,45
+173,sexta,07h15,1900-01-01 07:15:00,Gabi,Fer,45
+174,sexta,09h30,1900-01-01 09:30:00,Lana,Nat,45
+175,sexta,09h30,1900-01-01 09:30:00,Zezé ,Nat,45
+176,sexta,15h15,1900-01-01 15:15:00,Lívia (R),Nat,45
+177,sexta,16h00,1900-01-01 16:00:00,Sofia,Nat,45
+178,sexta,15h15,1900-01-01 15:15:00,Cida (R),Nat,45
+179,sexta,16h45,1900-01-01 16:45:00,Alexandre,Nat,45
+181,sábado,08h15,1900-01-01 08:15:00,Simone,Fer,45
+182,sábado,08h15,1900-01-01 08:15:00,Anna Luísa,Fer,45
+183,sábado,10h30,1900-01-01 10:30:00,Bruno,Nat,45
+184,sábado,10h30,1900-01-01 10:30:00,Liliam (R),Nat,45
+185,terça,07h00,1900-01-01 07:00:00,L,Nat,45
+186,terça,07h45,1900-01-01 07:45:00,L,Jane,45
+187,terça,08h30,1900-01-01 08:30:00,L,Jane,45
+188,terça,09h15,1900-01-01 09:15:00,L,Jane,45
+189,terça,11h00,1900-01-01 11:00:00,L,Nat,45
+190,terça,11h45,1900-01-01 11:45:00,L,xxx,45
+191,terça,13h45,1900-01-01 13:45:00,L,xxx,45
+192,terça,18h30,1900-01-01 18:30:00,Rosana H. (EXP),Fer,45
+193,quarta,06h15,1900-01-01 06:15:00,L,Nat,45
+194,quarta,10h15,1900-01-01 10:15:00,L,Dani,45
+195,quarta,15h15,1900-01-01 15:15:00,L,Nat,45
+196,quarta,19h45,1900-01-01 19:45:00,L,Dani,45
+197,quarta,20h30,1900-01-01 20:30:00,L,xxx,45
+198,quinta,07h00,1900-01-01 07:00:00,L,Nat,45
+199,quinta,07h45,1900-01-01 07:45:00,L,Jane,45
+200,quinta,08h30,1900-01-01 08:30:00,L,Jane,45
+201,quinta,09h15,1900-01-01 09:15:00,L,Jane,45
+202,sexta,06h15,1900-01-01 06:15:00,L,Nat,45
+203,quinta,14h30,1900-01-01 14:30:00,Jadson,Nat,45
+204,quinta,11h00,1900-01-01 11:00:00,L,Nat,45
+205,sexta,08h00,1900-01-01 08:00:00,L,Nat,45
+206,sexta,08h45,1900-01-01 08:45:00,L (somente dia 09/01),Nat,45
+207,sexta,09h30,1900-01-01 09:30:00,Zezé (só dia 09/01),Nat,45
+208,sexta,11h00,1900-01-01 11:00:00,L,Nat,45
+209,sexta,13h45,1900-01-01 13:45:00,L,Nat,45
+210,sexta,14h30,1900-01-01 14:30:00,L,Nat,45
+211,sexta,16h00,1900-01-01 16:00:00,L,Nat,45
+212,sexta,16h45,1900-01-01 16:45:00,L,Nat,45
+213,sexta,17h30,1900-01-01 17:30:00,L,Nat,45
+214,sexta,18h15,1900-01-01 18:15:00,L,Nat,45
+215,sexta,19h00,1900-01-01 19:00:00,Ivonete ,Dani,45
+216,sexta,19h00,1900-01-01 19:00:00,Luciano,Dani,45
