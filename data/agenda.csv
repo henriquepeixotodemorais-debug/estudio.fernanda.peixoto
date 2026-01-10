@@ -147,4 +147,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 219,segunda,11h45,1900-01-01 11:45:00,Gabi (R),Nat,45
 220,segunda,13h45,1900-01-01 13:45:00,Cecília (fisio),Nat,45
 221,segunda,15h15,1900-01-01 15:15:00,Lívia (viagem),Nat,45
-222,segunda,16h00,16:00,Cristina,Nat,45
+222,segunda,16h00,1900-01-01 16:00:00,Cristina,Nat,45
