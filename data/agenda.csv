@@ -25,7 +25,6 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 79,sábado,09h00,1900-01-01 09:00:00,Samyra/Rael/Isabeli/Débora,Fer,45
 80,sábado,09h45,1900-01-01 09:45:00,Rosana/Renata,Fer,45
 89,terça,10h15,1900-01-01 10:15:00,Walter,Nat,45
-90,quarta,14h30,1900-01-01 14:30:00,Yasmin,Nat,45
 94,sábado,07h30,1900-01-01 07:30:00,Vera Valladares,Nat,45
 97,quarta,20h30,1900-01-01 20:30:00,Kenia,xxx,45
 99,segunda,06h15,1900-01-01 06:15:00,Eluiza,Nat,45
