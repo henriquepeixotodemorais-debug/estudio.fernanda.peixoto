@@ -146,4 +146,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 215,sexta,19h00,1900-01-01 19:00:00,Ivonete ,Dani,45
 216,sexta,19h00,1900-01-01 19:00:00,Luciano,Dani,45
 217,segunda,08h00,1900-01-01 08:00:00,Edilma,Dani,45
-218,segunda,08h45,08:45,Ledi,Dani,45
+218,segunda,08h45,1900-01-01 08:45:00,Ledi,Dani,45
