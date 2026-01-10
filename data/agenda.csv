@@ -148,4 +148,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 225,segunda,20h30,1900-01-01 20:30:00,Rafael (R),Dani,45
 226,terça,10h15,1900-01-01 10:15:00,Lana,Nat,45
 227,terça,11h45,1900-01-01 11:45:00,Laura Caroline,Nat,45
-228,terça,11h45,11:45,L,Nat,45
+228,terça,11h45,1900-01-01 11:45:00,L,Nat,45
