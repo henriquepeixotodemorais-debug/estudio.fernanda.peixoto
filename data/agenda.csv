@@ -153,3 +153,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 255,terça,15h15,1900-01-01 15:15:00,L,xxx,45
 256,quarta,11h00,1900-01-01 11:00:00,L,xxx,45
 257,quarta,14h30,1900-01-01 14:30:00,L,Nat,45
+258,quinta,11h00,11:00,L,Nat,45
