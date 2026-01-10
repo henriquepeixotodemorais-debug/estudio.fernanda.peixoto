@@ -148,3 +148,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 246,sexta,10h15,1900-01-01 10:15:00,L ,Nat,45
 247,sexta,15h15,1900-01-01 15:15:00,L ,Nat,45
 248,sábado,08h15,1900-01-01 08:15:00,L,Fer,45
+249,sábado,10h30,10:30,Rafael,Nat,45
