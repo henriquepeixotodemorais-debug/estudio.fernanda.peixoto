@@ -156,4 +156,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 258,quinta,11h00,1900-01-01 11:00:00,L,Nat,45
 259,quinta,16h45,1900-01-01 16:45:00,L,Fer,45
 260,sexta,10h15,1900-01-01 10:15:00,L,Nat,45
-261,sexta,13h45,13:45,L,Nat,45
+261,sexta,13h45,1900-01-01 13:45:00,L,Nat,45
