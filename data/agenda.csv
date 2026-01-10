@@ -147,4 +147,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 222,segunda,16h00,1900-01-01 16:00:00,Cristina,Nat,45
 223,segunda,17h30,1900-01-01 17:30:00,Socorro,Fer,45
 224,segunda,18h15,1900-01-01 18:15:00,Joelle,Fer,45
-225,segunda,20h30,20:30,Rafael (R),Dani,45
+225,segunda,20h30,1900-01-01 20:30:00,Rafael (R),Dani,45
