@@ -150,4 +150,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 241,quinta,19h15,1900-01-01 19:15:00,Laídes,Nat,45
 242,sexta,07h15,1900-01-01 07:15:00,L,Fer,45
 243,sexta,08h00,1900-01-01 08:00:00,Igor (fevereiro),Nat,45
-244,sexta,08h45,08:45,Zezé ,Nat,45
+244,sexta,08h45,1900-01-01 08:45:00,Zezé ,Nat,45
