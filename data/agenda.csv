@@ -158,4 +158,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 261,sexta,13h45,1900-01-01 13:45:00,L,Nat,45
 262,sexta,14h30,1900-01-01 14:30:00,L,Nat,45
 263,sexta,18h15,1900-01-01 18:15:00,Simone,Nat,45
-264,sábado,07h30,07:30,L,xxx,45
+264,sábado,07h30,1900-01-01 07:30:00,L,xxx,45
