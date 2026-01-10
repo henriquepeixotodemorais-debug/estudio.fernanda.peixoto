@@ -66,6 +66,7 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 129,segunda,11h00,1900-01-01 11:00:00,Dona Maria/Seu José,Nat,45
 130,segunda,11h45,1900-01-01 11:45:00,L,xxx,45
 131,segunda,06h15,1900-01-01 06:15:00,L,Nat,45
+132,segunda,08h00,1900-01-01 08:00:00,L,Dani,45
 133,segunda,08h45,1900-01-01 08:45:00,L,Dani,45
 134,segunda,13h45,1900-01-01 13:45:00,L,xxx,45
 135,segunda,14h30,1900-01-01 14:30:00,L,Nat,45
