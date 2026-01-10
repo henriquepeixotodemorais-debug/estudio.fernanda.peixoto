@@ -148,4 +148,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 243,sexta,08h00,1900-01-01 08:00:00,Igor (fevereiro),Nat,45
 244,sexta,08h45,1900-01-01 08:45:00,Zezé ,Nat,45
 245,sexta,09h30,1900-01-01 09:30:00,Lídia,Nat,45
-246,sexta,10h15,10:15,L ,Nat,45
+246,sexta,10h15,1900-01-01 10:15:00,L ,Nat,45
