@@ -21,7 +21,6 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 57,quinta,16h00,1900-01-01 16:00:00,Malu/Massena,Fer,45
 62,quinta,20h00,1900-01-01 20:00:00,Fernanda/Diego,Nat,45
 65,sexta,08h45,1900-01-01 08:45:00,Aurélio,Nat,45
-67,sexta,10h15,1900-01-01 10:15:00,Maria/José,Nat,45
 68,sexta,11h00,1900-01-01 11:00:00,Ledi,Nat,45
 74,sexta,18h15,1900-01-01 18:15:00,Laura (Exp),Nat,45
 79,sábado,09h00,1900-01-01 09:00:00,Samyra/Rael/Isabeli/Débora,Fer,45
