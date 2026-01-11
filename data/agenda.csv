@@ -158,4 +158,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 267,segunda,13h45,1900-01-01 13:45:00,L,Nat,45
 268,segunda,15h15,1900-01-01 15:15:00,Cecília (fisio),Nat,45
 269,segunda,16h00,1900-01-01 16:00:00,Simone,Nat,45
-270,terça,08h00,08:00,Simone,Nat,45
+270,terça,08h00,1900-01-01 08:00:00,Simone,Nat,45
