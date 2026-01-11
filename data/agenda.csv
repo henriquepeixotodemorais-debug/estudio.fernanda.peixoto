@@ -89,7 +89,6 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 192,terça,18h30,1900-01-01 18:30:00,Rosana H. (EXP),Fer,45
 193,quarta,06h15,1900-01-01 06:15:00,L,Nat,45
 195,quarta,15h15,1900-01-01 15:15:00,L,Nat,45
-196,quarta,19h45,1900-01-01 19:45:00,L,Dani,45
 197,quarta,20h30,1900-01-01 20:30:00,L,xxx,45
 198,quinta,07h00,1900-01-01 07:00:00,L,Nat,45
 199,quinta,07h45,1900-01-01 07:45:00,L,Jane,45
