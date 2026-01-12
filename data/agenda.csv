@@ -159,4 +159,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 270,terça,08h00,1900-01-01 08:00:00,Simone,Nat,45
 271,quarta,19h45,1900-01-01 19:45:00,Laídes,Dani,45
 272,quinta,19h15,1900-01-01 19:15:00,L,Nat,45
-273,quarta,08h45,08:45,Kleydson,Dani,45
+273,quarta,08h45,1900-01-01 08:45:00,Kleydson,Dani,45
