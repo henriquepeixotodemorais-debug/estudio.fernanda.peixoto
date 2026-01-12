@@ -165,3 +165,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 295,quarta,14h30,1900-01-01 14:30:00,L,Nat,45
 296,sexta,10h15,1900-01-01 10:15:00,Alexandre,Nat,45
 297,quinta,07h45,1900-01-01 07:45:00,L,xxx,45
+298,quinta,12h00,12:00,L,Nat,45
