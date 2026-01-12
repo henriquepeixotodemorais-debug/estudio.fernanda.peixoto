@@ -170,4 +170,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 303,terça,16h45,1900-01-01 16:45:00,Fabi M. (R),Dani,45
 304,quinta,08h30,1900-01-01 08:30:00,L,xxx,45
 305,terça,08h30,1900-01-01 08:30:00,L,xxx,45
-306,terça,08h30,08:30,L,xxx,45
+306,terça,08h30,1900-01-01 08:30:00,L,xxx,45
