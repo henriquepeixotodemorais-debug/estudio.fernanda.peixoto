@@ -125,7 +125,6 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 236,quarta,15h15,1900-01-01 15:15:00,Lívia (viagem),Nat,45
 237,quarta,16h00,1900-01-01 16:00:00,Cristina,Fer,45
 238,quarta,18h15,1900-01-01 18:15:00,Joelle,Fer,45
-239,quarta,19h45,1900-01-01 19:45:00,Gabi (R),Dani,45
 242,sexta,07h15,1900-01-01 07:15:00,L,Fer,45
 243,sexta,08h00,1900-01-01 08:00:00,Igor (fevereiro),Nat,45
 244,sexta,08h45,1900-01-01 08:45:00,Zezé ,Nat,45
