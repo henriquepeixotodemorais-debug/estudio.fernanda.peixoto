@@ -159,4 +159,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 278,quinta,16h45,1900-01-01 16:45:00,Yasmin,Fer,45
 279,sexta,08h00,1900-01-01 08:00:00,Tânia,Fer,45
 280,sexta,10h15,1900-01-01 10:15:00,Jadson,Nat,45
-281,sexta,16h00,16:00,Cristina (começa dia 23),Nat,45
+281,sexta,16h00,1900-01-01 16:00:00,Cristina (começa dia 23),Nat,45
