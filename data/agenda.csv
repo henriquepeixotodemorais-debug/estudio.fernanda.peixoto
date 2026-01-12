@@ -172,3 +172,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 307,sexta,16h00,1900-01-01 16:00:00,Cristina,Nat,45
 308,segunda,11h45,1900-01-01 11:45:00,L,Nat,45
 309,segunda,11h45,1900-01-01 11:45:00,L,Nat,45
+310,segunda,11h45,11:45,L,Nat,45
