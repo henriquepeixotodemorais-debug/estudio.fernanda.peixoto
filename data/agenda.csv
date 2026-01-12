@@ -101,7 +101,6 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 216,sexta,19h00,1900-01-01 19:00:00,Luciano,Dani,45
 217,segunda,08h00,1900-01-01 08:00:00,Edilma,Dani,45
 218,segunda,08h45,1900-01-01 08:45:00,Ledi,Dani,45
-219,segunda,11h45,1900-01-01 11:45:00,Gabi (R),Nat,45
 221,segunda,15h15,1900-01-01 15:15:00,Lívia (viagem),Nat,45
 222,segunda,16h00,1900-01-01 16:00:00,Cristina,Nat,45
 223,segunda,17h30,1900-01-01 17:30:00,Socorro,Fer,45
