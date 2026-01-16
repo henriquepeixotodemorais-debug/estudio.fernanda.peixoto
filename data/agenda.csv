@@ -45,6 +45,7 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 127,terça,15h15,1900-01-01 15:15:00,L,xxx,45
 129,segunda,11h00,1900-01-01 11:00:00,Dona Maria/Seu José,Nat,45
 131,segunda,06h15,1900-01-01 06:15:00,L,Nat,45
+135,segunda,14h30,1900-01-01 14:30:00,L,Nat,45
 138,segunda,18h15,1900-01-01 18:15:00,Simone,Fer,45
 141,quarta,07h15,1900-01-01 07:15:00,Brier,Fer,45
 143,quarta,08h45,1900-01-01 08:45:00,Gustavo,Dani,45
