@@ -169,4 +169,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 329,terça,16h45,1900-01-01 16:45:00,Fabiana S.,Dani,45
 330,quarta,07h15,1900-01-01 07:15:00,L,Fer,45
 331,quarta,08h00,1900-01-01 08:00:00,L,Dani,45
-332,quarta,08h45,08:45,Fabiana S.,Dani,45
+332,quarta,08h45,1900-01-01 08:45:00,Fabiana S.,Dani,45
