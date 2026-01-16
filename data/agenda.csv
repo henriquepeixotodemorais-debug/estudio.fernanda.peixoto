@@ -126,7 +126,6 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 258,quinta,11h00,1900-01-01 11:00:00,L,Nat,45
 261,sexta,13h45,1900-01-01 13:45:00,L,Nat,45
 262,sexta,14h30,1900-01-01 14:30:00,L,Nat,45
-264,sábado,07h30,1900-01-01 07:30:00,L,xxx,45
 267,segunda,13h45,1900-01-01 13:45:00,L,Nat,45
 268,segunda,15h15,1900-01-01 15:15:00,Cecília (fisio),Nat,45
 270,terça,08h00,1900-01-01 08:00:00,Simone,Nat,45
