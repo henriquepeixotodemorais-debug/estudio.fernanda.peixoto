@@ -169,3 +169,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 320,sexta,19h45,1900-01-01 19:45:00,L,Nat,45
 321,sábado,07h30,1900-01-01 07:30:00,Antônio (dia 24/01),Nat,45
 322,segunda,14h30,1900-01-01 14:30:00,Cecília (fisio),Nat,45
+323,segunda,15h15,15:15,Lívia,Nat,45
