@@ -169,4 +169,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 348,segunda,09h30,1900-01-01 09:30:00,Edilma,Dani,45
 349,segunda,18h15,1900-01-01 18:15:00,L,Fer,45
 350,segunda,20h30,1900-01-01 20:30:00,Marcelo,Dani,45
-351,quarta,08h45,08:45,Gustavo,Dani,45
+351,quarta,08h45,1900-01-01 08:45:00,Gustavo,Dani,45
