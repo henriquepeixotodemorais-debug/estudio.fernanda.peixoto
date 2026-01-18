@@ -170,3 +170,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 346,sexta,16h45,1900-01-01 16:45:00,L,Nat,45
 347,sábado,10h30,1900-01-01 10:30:00,Bruno (não vai),Nat,45
 348,segunda,09h30,1900-01-01 09:30:00,Edilma,Dani,45
+349,segunda,18h15,18:15,L,Fer,45
