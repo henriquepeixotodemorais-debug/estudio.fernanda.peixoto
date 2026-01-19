@@ -127,6 +127,7 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 297,quinta,07h45,1900-01-01 07:45:00,L,xxx,45
 298,quinta,12h00,1900-01-01 12:00:00,L,Nat,45
 299,quinta,20h45,1900-01-01 20:45:00,L,Nat,45
+300,quinta,20h45,1900-01-01 20:45:00,L,Nat,45
 301,sexta,06h15,1900-01-01 06:15:00,L,Nat,45
 304,quinta,08h30,1900-01-01 08:30:00,L,xxx,45
 305,terça,08h30,1900-01-01 08:30:00,L,xxx,45
