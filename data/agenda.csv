@@ -170,4 +170,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 368,segunda,16h00,1900-01-01 16:00:00,Cristina,Fer,45
 369,segunda,16h00,1900-01-01 16:00:00,L,Fer,45
 370,segunda,10h15,1900-01-01 10:15:00,Lana,Nat,45
-371,terça,15h15,15:15,Mercedes,Nat,45
+371,terça,15h15,1900-01-01 15:15:00,Mercedes,Nat,45
