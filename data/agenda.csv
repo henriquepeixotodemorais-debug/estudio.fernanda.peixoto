@@ -43,7 +43,6 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 131,segunda,06h15,1900-01-01 06:15:00,L,Nat,45
 138,segunda,18h15,1900-01-01 18:15:00,Simone,Fer,45
 141,quarta,07h15,1900-01-01 07:15:00,Brier,Fer,45
-145,quarta,09h30,1900-01-01 09:30:00,Patrícia,Dani,45
 147,quarta,11h00,1900-01-01 11:00:00,L,xxx,45
 149,quarta,16h00,1900-01-01 16:00:00,Cida,Fer,45
 152,quarta,18h15,1900-01-01 18:15:00,Alexandre,Fer,45
