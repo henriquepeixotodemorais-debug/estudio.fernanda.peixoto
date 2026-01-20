@@ -120,6 +120,7 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 291,sexta,08h00,1900-01-01 08:00:00,Tânia,Nat,45
 293,terça,07h45,1900-01-01 07:45:00,L,xxx,45
 294,segunda,08h00,1900-01-01 08:00:00,Lourencio,Dani,45
+295,quarta,14h30,1900-01-01 14:30:00,L,Nat,45
 297,quinta,07h45,1900-01-01 07:45:00,L,xxx,45
 298,quinta,12h00,1900-01-01 12:00:00,L,Nat,45
 304,quinta,08h30,1900-01-01 08:30:00,L,xxx,45
