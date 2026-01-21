@@ -173,3 +173,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 379,quarta,07h15,1900-01-01 07:15:00,L,Fer,45
 380,quarta,09h30,1900-01-01 09:30:00,L,Dani,45
 381,quinta,18h30,1900-01-01 18:30:00,L (dia 22/01) ,Fer,45
+382,quinta,17h30,17:30,L (dia 22/01) ,Fer,45
