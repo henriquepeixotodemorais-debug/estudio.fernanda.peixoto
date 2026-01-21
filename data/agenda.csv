@@ -175,3 +175,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 385,quarta,14h30,1900-01-01 14:30:00,L,Nat,45
 386,sexta,17h30,1900-01-01 17:30:00,L,Nat,45
 387,sexta,08h45,1900-01-01 08:45:00,L,Nat,45
+388,sexta,09h30,09:30,Zezé,Nat,45
