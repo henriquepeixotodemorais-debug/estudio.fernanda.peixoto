@@ -173,3 +173,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 387,sexta,08h45,1900-01-01 08:45:00,L,Nat,45
 388,sexta,09h30,1900-01-01 09:30:00,Zezé,Nat,45
 389,terça,17h30,1900-01-01 17:30:00,Keka,Fer,45
+390,terça,17h30,17:30,Yasmin,Fer,45
