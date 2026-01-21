@@ -93,6 +93,7 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 237,quarta,16h00,1900-01-01 16:00:00,Cristina,Fer,45
 238,quarta,18h15,1900-01-01 18:15:00,Joelle,Fer,45
 243,sexta,08h00,1900-01-01 08:00:00,Igor (fevereiro),Nat,45
+244,sexta,08h45,1900-01-01 08:45:00,Zezé ,Nat,45
 245,sexta,09h30,1900-01-01 09:30:00,Lídia,Nat,45
 249,sábado,10h30,1900-01-01 10:30:00,Rafael,Nat,45
 250,sábado,11h15,1900-01-01 11:15:00,Laura Caroline,Nat,45
