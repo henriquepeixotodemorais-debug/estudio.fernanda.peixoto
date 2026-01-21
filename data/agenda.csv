@@ -23,7 +23,6 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 97,quarta,20h30,1900-01-01 20:30:00,Kenia,xxx,45
 99,segunda,06h15,1900-01-01 06:15:00,Eluiza,Nat,45
 100,quarta,06h15,1900-01-01 06:15:00,Eluiza,Nat,45
-102,sexta,17h30,1900-01-01 17:30:00,Eleandra,Nat,45
 104,segunda,08h00,1900-01-01 08:00:00,Perla,Dani,45
 105,segunda,08h45,1900-01-01 08:45:00,Sandra,Dani,45
 107,segunda,09h30,1900-01-01 09:30:00,Zezé,Dani,45
