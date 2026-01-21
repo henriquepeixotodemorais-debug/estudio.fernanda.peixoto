@@ -96,7 +96,6 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 245,sexta,09h30,1900-01-01 09:30:00,Lídia,Nat,45
 249,sábado,10h30,1900-01-01 10:30:00,Rafael,Nat,45
 250,sábado,11h15,1900-01-01 11:15:00,Laura Caroline,Nat,45
-251,sábado,11h15,1900-01-01 11:15:00,Lídia,Nat,45
 253,terça,09h15,1900-01-01 09:15:00,L,xxx,45
 254,terça,13h45,1900-01-01 13:45:00,L,xxx,45
 256,quarta,11h00,1900-01-01 11:00:00,L,xxx,45
