@@ -171,4 +171,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 377,segunda,16h00,1900-01-01 16:00:00,Fabi M. (R),Fer,45
 378,terça,15h15,1900-01-01 15:15:00,Fabi M. (R),Nat,45
 379,quarta,07h15,1900-01-01 07:15:00,L,Fer,45
-380,quarta,09h30,09:30,L,Dani,45
+380,quarta,09h30,1900-01-01 09:30:00,L,Dani,45
