@@ -173,4 +173,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 375,quarta,14h30,1900-01-01 14:30:00,Fabi S. (T),Nat,45
 376,quinta,13h00,1900-01-01 13:00:00,Davi,Nat,45
 377,segunda,16h00,1900-01-01 16:00:00,Fabi M. (R),Fer,45
-378,terça,15h15,15:15,Fabi M. (R),Nat,45
+378,terça,15h15,1900-01-01 15:15:00,Fabi M. (R),Nat,45
