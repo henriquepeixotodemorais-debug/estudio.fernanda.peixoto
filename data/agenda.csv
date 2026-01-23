@@ -177,3 +177,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 398,segunda,15h15,1900-01-01 15:15:00,Cecília,Nat,45
 399,segunda,15h15,1900-01-01 15:15:00,L (26/01 - Lívia não vai),Nat,45
 400,segunda,16h45,1900-01-01 16:45:00,L (26/01 - Rachel não vai),Fer,45
+401,segunda,16h45,16:45,L (26/01 - Rachel não vai),Fer,45
