@@ -142,7 +142,6 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 357,sexta,20h30,1900-01-01 20:30:00,Marcelo,Nat,45
 358,sábado,08h15,1900-01-01 08:15:00,L,Fer,45
 359,sábado,10h30,1900-01-01 10:30:00,Bruno,Nat,45
-364,quinta,20h45,1900-01-01 20:45:00,Casal (experimental),Nat,45
 365,sexta,06h15,1900-01-01 06:15:00,Eluiza (R),Nat,45
 367,segunda,15h15,1900-01-01 15:15:00,Lívia,Nat,45
 368,segunda,16h00,1900-01-01 16:00:00,Cristina,Fer,45
