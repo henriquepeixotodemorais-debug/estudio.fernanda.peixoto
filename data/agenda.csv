@@ -123,7 +123,6 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 318,sexta,10h15,1900-01-01 10:15:00,L,Nat,45
 319,sexta,19h45,1900-01-01 19:45:00,Nadine,Nat,45
 321,sábado,07h30,1900-01-01 07:30:00,Antônio (dia 24/01),Nat,45
-322,segunda,14h30,1900-01-01 14:30:00,Cecília (fisio),Nat,45
 324,segunda,15h15,1900-01-01 15:15:00,L,Nat,45
 326,terça,06h15,1900-01-01 06:15:00,Vera Valladares,Nat,45
 327,terça,07h00,1900-01-01 07:00:00,L,Nat,45
