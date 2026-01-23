@@ -63,6 +63,7 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 179,sexta,16h45,1900-01-01 16:45:00,Alexandre,Nat,45
 181,sábado,08h15,1900-01-01 08:15:00,Simone,Fer,45
 186,terça,07h45,1900-01-01 07:45:00,L,Jane,45
+188,terça,09h15,1900-01-01 09:15:00,L,Jane,45
 189,terça,11h00,1900-01-01 11:00:00,L,Nat,45
 191,terça,13h45,1900-01-01 13:45:00,L,xxx,45
 193,quarta,06h15,1900-01-01 06:15:00,L,Nat,45
