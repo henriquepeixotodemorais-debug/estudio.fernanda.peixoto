@@ -126,7 +126,6 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 345,sexta,15h15,1900-01-01 15:15:00,Lívia (R),Nat,45
 346,sexta,16h45,1900-01-01 16:45:00,L,Nat,45
 348,segunda,09h30,1900-01-01 09:30:00,Edilma,Dani,45
-350,segunda,20h30,1900-01-01 20:30:00,Marcelo,Dani,45
 351,quarta,08h45,1900-01-01 08:45:00,Gustavo,Dani,45
 352,quarta,09h30,1900-01-01 09:30:00,L,Dani,45
 357,sexta,20h30,1900-01-01 20:30:00,Marcelo,Nat,45
