@@ -173,4 +173,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 414,quarta,08h00,1900-01-01 08:00:00,Marcelo,Dani,45
 415,sexta,19h45,1900-01-01 19:45:00,Cintya ,Nat,45
 416,sexta,20h30,1900-01-01 20:30:00,Cleuza,Nat,45
-417,quarta,20h30,20:30,L,Dani,45
+417,quarta,20h30,1900-01-01 20:30:00,L,Dani,45
