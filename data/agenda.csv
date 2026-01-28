@@ -172,4 +172,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 426,segunda,20h30,1900-01-01 20:30:00,Marcelo,Dani,45
 427,terça,15h15,1900-01-01 15:15:00,L,Nat,45
 428,quarta,14h30,1900-01-01 14:30:00,L,Nat,45
-429,quarta,16h00,16:00,Cristina,Fer,45
+429,quarta,16h00,1900-01-01 16:00:00,Cristina,Fer,45
