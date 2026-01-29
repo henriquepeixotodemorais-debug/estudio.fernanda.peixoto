@@ -173,4 +173,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 431,quinta,09h15,1900-01-01 09:15:00,Cláudia,Nat,45
 432,sexta,08h00,1900-01-01 08:00:00,Leida (R),Nat,45
 433,quinta,20h00,1900-01-01 20:00:00,Rosana H. (R),Nat,45
-434,sexta,15h15,15:15,L,Nat,45
+434,sexta,15h15,1900-01-01 15:15:00,L,Nat,45
