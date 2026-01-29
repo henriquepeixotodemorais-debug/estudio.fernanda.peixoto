@@ -71,7 +71,6 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 204,quinta,11h00,1900-01-01 11:00:00,L,Nat,45
 208,sexta,11h00,1900-01-01 11:00:00,L,Nat,45
 209,sexta,13h45,1900-01-01 13:45:00,L,Nat,45
-213,sexta,17h30,1900-01-01 17:30:00,L,Nat,45
 215,sexta,19h00,1900-01-01 19:00:00,Ivonete ,Dani,45
 216,sexta,19h00,1900-01-01 19:00:00,Luciano,Dani,45
 218,segunda,08h45,1900-01-01 08:45:00,Ledi,Dani,45
