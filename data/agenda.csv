@@ -154,6 +154,7 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 407,quinta,13h45,1900-01-01 13:45:00,L,Nat,45
 408,quinta,14h30,1900-01-01 14:30:00,L,Nat,45
 409,sexta,15h15,1900-01-01 15:15:00,L,Nat,45
+410,sexta,16h00,1900-01-01 16:00:00,L,Nat,45
 412,sábado,07h30,1900-01-01 07:30:00,Antônio,Nat,45
 414,quarta,08h00,1900-01-01 08:00:00,Marcelo,Dani,45
 415,sexta,19h45,1900-01-01 19:45:00,Cintya ,Nat,45
