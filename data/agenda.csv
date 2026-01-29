@@ -67,7 +67,6 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 198,quinta,07h00,1900-01-01 07:00:00,L,Nat,45
 199,quinta,07h45,1900-01-01 07:45:00,L,Jane,45
 200,quinta,08h30,1900-01-01 08:30:00,L,Jane,45
-201,quinta,09h15,1900-01-01 09:15:00,L,Jane,45
 202,sexta,06h15,1900-01-01 06:15:00,L,Nat,45
 204,quinta,11h00,1900-01-01 11:00:00,L,Nat,45
 208,sexta,11h00,1900-01-01 11:00:00,L,Nat,45
