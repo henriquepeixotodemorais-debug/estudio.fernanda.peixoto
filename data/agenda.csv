@@ -167,4 +167,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 442,segunda,20h30,1900-01-01 20:30:00,L,Dani,45
 443,terça,11h45,1900-01-01 11:45:00,L,Nat,45
 444,terça,14h30,1900-01-01 14:30:00,Francinete,Dani,45
-445,terça,14h30,14:30,Jaqueline,Dani,45
+445,terça,14h30,1900-01-01 14:30:00,Jaqueline,Dani,45
