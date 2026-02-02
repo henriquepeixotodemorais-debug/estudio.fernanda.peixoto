@@ -80,7 +80,6 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 256,quarta,11h00,1900-01-01 11:00:00,L,xxx,45
 258,quinta,11h00,1900-01-01 11:00:00,L,Nat,45
 261,sexta,13h45,1900-01-01 13:45:00,L,Nat,45
-267,segunda,13h45,1900-01-01 13:45:00,L,Nat,45
 271,quarta,19h45,1900-01-01 19:45:00,Laídes,Dani,45
 275,quarta,08h00,1900-01-01 08:00:00,Lourencio ,Dani,45
 278,quinta,16h45,1900-01-01 16:45:00,Yasmin,Fer,45
