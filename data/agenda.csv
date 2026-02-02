@@ -91,7 +91,6 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 306,terça,08h30,1900-01-01 08:30:00,L,xxx,45
 313,terça,18h30,1900-01-01 18:30:00,Fernanda R.,Fer,45
 314,terça,19h15,1900-01-01 19:15:00,Carol,Fer,45
-318,sexta,10h15,1900-01-01 10:15:00,L,Nat,45
 319,sexta,19h45,1900-01-01 19:45:00,Nadine,Nat,45
 326,terça,06h15,1900-01-01 06:15:00,Vera Valladares,Nat,45
 327,terça,07h00,1900-01-01 07:00:00,L,Nat,45
