@@ -32,7 +32,6 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 123,terça,19h15,1900-01-01 19:15:00,Ian,Fer,45
 125,terça,20h00,1900-01-01 20:00:00,Mila,Fer,45
 126,terça,20h00,1900-01-01 20:00:00,Leida,Fer,45
-129,segunda,11h00,1900-01-01 11:00:00,Dona Maria/Seu José,Nat,45
 131,segunda,06h15,1900-01-01 06:15:00,L,Nat,45
 138,segunda,18h15,1900-01-01 18:15:00,Simone,Fer,45
 147,quarta,11h00,1900-01-01 11:00:00,L,xxx,45
