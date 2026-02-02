@@ -163,4 +163,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 451,quinta,10h15,1900-01-01 10:15:00,Luíza,Nat,45
 452,quinta,17h30,1900-01-01 17:30:00,Simone AAJM (E),Fer,45
 453,sexta,08h45,1900-01-01 08:45:00,Ledi (T),Nat,45
-454,sexta,19h45,19:45,L,Nat,45
+454,sexta,19h45,1900-01-01 19:45:00,L,Nat,45
