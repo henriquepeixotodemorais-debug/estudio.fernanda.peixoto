@@ -159,3 +159,4 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 461,quarta,10h15,1900-01-01 10:15:00,L,Dani,45
 462,sexta,10h15,1900-01-01 10:15:00,Alicia,Nat,45
 463,sexta,08h00,1900-01-01 08:00:00,Leida (fisio),Nat,45
+464,sexta,16h00,16:00,L,Nat,45
