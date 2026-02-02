@@ -4,7 +4,6 @@ id,dia,horario,horario_sort,nome,profissional,duracao
 14,segunda,19h45,1900-01-01 19:45:00,Fernanda/Diego,Dani,45
 23,terça,11h00,1900-01-01 11:00:00,Aurélio,Nat,45
 27,terça,16h00,1900-01-01 16:00:00,Malu/Massena,Dani,45
-36,quarta,10h15,1900-01-01 10:15:00,Maria,Dani,45
 41,quarta,16h45,1900-01-01 16:45:00,Cássia/Melson,Fer,45
 42,quarta,17h30,1900-01-01 17:30:00,Annie,Fer,45
 51,quinta,09h15,1900-01-01 09:15:00,Mercedes,Jane,45
